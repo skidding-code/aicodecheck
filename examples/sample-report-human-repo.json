@@ -1,0 +1,2789 @@
+{
+  "id": "327825867c7b457493b9509c842a04d7",
+  "schema_version": 1,
+  "target": {
+    "kind": "repository",
+    "name": "clicktest",
+    "source": "/tmp/clicktest",
+    "owner": null,
+    "repo": null,
+    "ref": null,
+    "languages": {
+      "python": 61,
+      "markdown": 42,
+      "unknown": 16,
+      "toml": 11,
+      "yaml": 9,
+      "json": 1,
+      "shell": 1
+    },
+    "total_files": 141,
+    "analyzed_files": 141,
+    "skipped_files": 9,
+    "total_loc": 35882,
+    "bytes_scanned": 1163800
+  },
+  "overall_ai_probability": 0.4934,
+  "human_probability": 0.5066,
+  "classification": "uncertain",
+  "confidence": 0.8482,
+  "score": {
+    "ai_probability": 0.4934,
+    "human_probability": 0.5066,
+    "confidence": 0.8482,
+    "evidence_score": 0.2102,
+    "risk_score": 0.4185,
+    "classification": "uncertain",
+    "reasons": [
+      "[descriptive_naming, leans human] mean score 0.31 across 84 place(s).",
+      "[repetitive_patterns, leans AI] mean score 0.57 across 83 place(s).",
+      "[formatting_regularity, leans human] mean score 0.44 across 76 place(s).",
+      "[vocabulary_richness, leans AI] mean score 0.53 across 65 place(s).",
+      "[generic_comments, leans AI] mean score 0.58 across 10 place(s).",
+      "[repeated_boilerplate, leans AI] Cross-file duplicated-line ratio 24%.",
+      "[chatbot_wording, leans AI] mean score 0.58 across 4 place(s).",
+      "[cross_file_style_uniformity, leans AI] Per-file mean line length CV=0.23 across 84 files."
+    ]
+  },
+  "files": [
+    {
+      "level": "file",
+      "identifier": "src/click/_termui_impl.py",
+      "name": "src/click/_termui_impl.py",
+      "language": "python",
+      "path": "src/click/_termui_impl.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 946,
+      "score": {
+        "ai_probability": 0.5354,
+        "human_probability": 0.4646,
+        "confidence": 0.4827,
+        "evidence_score": 0.2914,
+        "risk_score": 0.2584,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 5 chars.",
+          "[generic_comments, leans AI] 5 LLM-typical comment phrase(s) over 123 comment line(s).",
+          "[repetitive_patterns, leans AI] 4-gram repetition 20%; compressibility 29%.",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.23 (lower is more repetitive).",
+          "[formatting_regularity, leans human] Line-length stdev 20; 4% of lines near a round width (note: also explained by auto-formatters).",
+          "[code_entropy, leans AI] Normalized token entropy 0.76 (lower is more predictable)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6102977934832885,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 20%; compressibility 29%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 20%, compresses to 29% of size).",
+              "severity": 0.6102977934832885,
+              "path": "src/click/_termui_impl.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "58% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.44427426685144056,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 20; 4% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.6686375321336762,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.23 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5137564086722676,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.76 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.6290650406504066,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "5 LLM-typical comment phrase(s) over 123 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 5 phrasing(s) common in LLM output (e.g. 'this function', 'for example,', 'this allows', 'to do this').",
+              "severity": 0.6290650406504066,
+              "path": "src/click/_termui_impl.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": "There are no standard streams attached to write to. For example,",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "file",
+      "identifier": "src/click/core.py",
+      "name": "src/click/core.py",
+      "language": "python",
+      "path": "src/click/core.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 3677,
+      "score": {
+        "ai_probability": 0.572,
+        "human_probability": 0.428,
+        "confidence": 0.447,
+        "evidence_score": 0.2997,
+        "risk_score": 0.2557,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[repetitive_patterns, leans AI] 4-gram repetition 31%; compressibility 24%.",
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+          "[generic_comments, leans AI] 6 LLM-typical comment phrase(s) over 344 comment line(s).",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.11 (lower is more repetitive).",
+          "[code_entropy, leans AI] Normalized token entropy 0.70 (lower is more predictable).",
+          "[formatting_regularity, leans human] Line-length stdev 21; 4% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6932215457698564,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 31%; compressibility 24%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 31%, compresses to 24% of size).",
+              "severity": 0.6932215457698564,
+              "path": "src/click/core.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "58% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.46186473386819876,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 21; 4% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.7907730012585282,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.11 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5498472567683759,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.70 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.6196220930232558,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "6 LLM-typical comment phrase(s) over 344 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 6 phrasing(s) common in LLM output (e.g. 'here we', 'note that', 'in order to', 'we now').",
+              "severity": 0.6196220930232558,
+              "path": "src/click/core.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": ": onwards to a subcommand. By default it's None, but it can be",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "file",
+      "identifier": "tests/test_utils.py",
+      "name": "tests/test_utils.py",
+      "language": "python",
+      "path": "tests/test_utils.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 858,
+      "score": {
+        "ai_probability": 0.5493,
+        "human_probability": 0.4507,
+        "confidence": 0.4655,
+        "evidence_score": 0.2957,
+        "risk_score": 0.2557,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[repetitive_patterns, leans AI] 4-gram repetition 48%; compressibility 23%.",
+          "[descriptive_naming, leans human] Avg identifier 1.2 words / 6 chars.",
+          "[generic_comments, leans AI] 1 LLM-typical comment phrase(s) over 29 comment line(s).",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.21 (lower is more repetitive).",
+          "[code_entropy, leans AI] Normalized token entropy 0.69 (lower is more predictable).",
+          "[formatting_regularity, leans human] Line-length stdev 20; 3% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.7220600351971842,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 48%; compressibility 23%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 48%, compresses to 23% of size).",
+              "severity": 0.7220600351971842,
+              "path": "tests/test_utils.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.2 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "47% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.4483498268990032,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 20; 3% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.688712011577424,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.21 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5556367465229982,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.69 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5554597701149425,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "1 LLM-typical comment phrase(s) over 29 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 1 phrasing(s) common in LLM output (e.g. 'this allows').",
+              "severity": 0.5554597701149425,
+              "path": "tests/test_utils.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": "This allows users to cancel the program and search in the pager",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "file",
+      "identifier": "tests/test_commands.py",
+      "name": "tests/test_commands.py",
+      "language": "python",
+      "path": "tests/test_commands.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 651,
+      "score": {
+        "ai_probability": 0.5548,
+        "human_probability": 0.4452,
+        "confidence": 0.4606,
+        "evidence_score": 0.2962,
+        "risk_score": 0.2556,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[repetitive_patterns, leans AI] 4-gram repetition 57%; compressibility 23%.",
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+          "[generic_comments, leans AI] 1 LLM-typical comment phrase(s) over 26 comment line(s).",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.19 (lower is more repetitive).",
+          "[code_entropy, leans AI] Normalized token entropy 0.66 (lower is more predictable).",
+          "[formatting_regularity, leans human] Line-length stdev 20; 1% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.7219865160712509,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 57%; compressibility 23%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 57%, compresses to 23% of size).",
+              "severity": 0.7219865160712509,
+              "path": "tests/test_commands.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "46% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.4418810205906442,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 20; 1% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.7078141499472017,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.19 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5716000994525021,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.66 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5599358974358974,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "1 LLM-typical comment phrase(s) over 26 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 1 phrasing(s) common in LLM output (e.g. 'by default').",
+              "severity": 0.5599358974358974,
+              "path": "tests/test_commands.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": "my-help is eager by default so takes precedence over -a and stop",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "file",
+      "identifier": "src/click/parser.py",
+      "name": "src/click/parser.py",
+      "language": "python",
+      "path": "src/click/parser.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 534,
+      "score": {
+        "ai_probability": 0.5229,
+        "human_probability": 0.4771,
+        "confidence": 0.4861,
+        "evidence_score": 0.2878,
+        "risk_score": 0.2542,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 5 chars.",
+          "[generic_comments, leans AI] 3 LLM-typical comment phrase(s) over 67 comment line(s).",
+          "[repetitive_patterns, leans AI] 4-gram repetition 19%; compressibility 29%.",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.23 (lower is more repetitive).",
+          "[formatting_regularity, leans human] Line-length stdev 21; 2% of lines near a round width (note: also explained by auto-formatters).",
+          "[naming_consistency, leans human] 69% of identifiers share one convention (note: also explained by linters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6070448740173984,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 19%; compressibility 29%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 19%, compresses to 29% of size).",
+              "severity": 0.6070448740173984,
+              "path": "src/click/parser.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "69% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.45298353568407007,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 21; 2% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.6746346063177746,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.23 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.49717714501255283,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.78 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.6003731343283583,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "3 LLM-typical comment phrase(s) over 67 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 3 phrasing(s) common in LLM output (e.g. 'this code', 'note that', 'this allows').",
+              "severity": 0.6003731343283583,
+              "path": "src/click/parser.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": "This code uses parts of optparse written by Gregory P. Ward and",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "file",
+      "identifier": "src/click/shell_completion.py",
+      "name": "src/click/shell_completion.py",
+      "language": "python",
+      "path": "src/click/shell_completion.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 682,
+      "score": {
+        "ai_probability": 0.5222,
+        "human_probability": 0.4778,
+        "confidence": 0.4867,
+        "evidence_score": 0.288,
+        "risk_score": 0.2541,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+          "[repetitive_patterns, leans AI] 4-gram repetition 22%; compressibility 29%.",
+          "[generic_comments, leans AI] 2 LLM-typical comment phrase(s) over 43 comment line(s).",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.24 (lower is more repetitive).",
+          "[formatting_regularity, leans human] Line-length stdev 21; 1% of lines near a round width (note: also explained by auto-formatters).",
+          "[naming_consistency, leans human] 55% of identifiers share one convention (note: also explained by linters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.624093301031089,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 22%; compressibility 29%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 22%, compresses to 29% of size).",
+              "severity": 0.624093301031089,
+              "path": "src/click/shell_completion.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "55% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.4413755254707573,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 21; 1% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.664093668690373,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.24 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5056146697155138,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.77 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5856589147286821,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "2 LLM-typical comment phrase(s) over 43 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 2 phrasing(s) common in LLM output (e.g. 'this method', 'here we').",
+              "severity": 0.5856589147286821,
+              "path": "src/click/shell_completion.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": "thus harder to fix than this method.)",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "file",
+      "identifier": "src/click/utils.py",
+      "name": "src/click/utils.py",
+      "language": "python",
+      "path": "src/click/utils.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 648,
+      "score": {
+        "ai_probability": 0.5036,
+        "human_probability": 0.4964,
+        "confidence": 0.4992,
+        "evidence_score": 0.2817,
+        "risk_score": 0.2514,
+        "classification": "uncertain",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 5 chars.",
+          "[repetitive_patterns, leans AI] 4-gram repetition 20%; compressibility 33%.",
+          "[generic_comments, leans AI] 1 LLM-typical comment phrase(s) over 31 comment line(s).",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.27 (lower is more repetitive).",
+          "[formatting_regularity, leans human] Line-length stdev 22; 3% of lines near a round width (note: also explained by auto-formatters).",
+          "[code_entropy, leans AI] Normalized token entropy 0.77 (lower is more predictable)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6011754865741293,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 20%; compressibility 33%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 20%, compresses to 33% of size).",
+              "severity": 0.6011754865741293,
+              "path": "src/click/utils.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.48307189542483664,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "72% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.4369551576228407,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 22; 3% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.6346938775510205,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.27 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5076849427759225,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.77 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5529569892473118,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "1 LLM-typical comment phrase(s) over 31 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 1 phrasing(s) common in LLM output (e.g. 'for example,').",
+              "severity": 0.5529569892473118,
+              "path": "src/click/utils.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": "There are no standard streams attached to write to. For example,",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "file",
+      "identifier": "src/click/types.py",
+      "name": "src/click/types.py",
+      "language": "python",
+      "path": "src/click/types.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 1375,
+      "score": {
+        "ai_probability": 0.546,
+        "human_probability": 0.454,
+        "confidence": 0.4602,
+        "evidence_score": 0.2947,
+        "risk_score": 0.2513,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[repetitive_patterns, leans AI] 4-gram repetition 32%; compressibility 25%.",
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 5 chars.",
+          "[generic_comments, leans AI] 2 LLM-typical comment phrase(s) over 58 comment line(s).",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.17 (lower is more repetitive).",
+          "[code_entropy, leans AI] Normalized token entropy 0.73 (lower is more predictable).",
+          "[formatting_regularity, leans human] Line-length stdev 22; 3% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6961606477876222,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 32%; compressibility 25%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 32%, compresses to 25% of size).",
+              "severity": 0.6961606477876222,
+              "path": "src/click/types.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "69% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.4352162759560129,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 22; 3% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.7320344544708778,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.17 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5293571551641791,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.73 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5721264367816091,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "2 LLM-typical comment phrase(s) over 58 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 2 phrasing(s) common in LLM output (e.g. 'this will', 'by default').",
+              "severity": 0.5721264367816091,
+              "path": "src/click/types.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": ": are split by ``os.path.pathsep`` by default (\":\" on Unix and \";\" on",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    }
+  ],
+  "folders": [
+    {
+      "level": "folder",
+      "identifier": "src",
+      "name": "src",
+      "language": null,
+      "path": "src",
+      "start_line": null,
+      "end_line": null,
+      "loc": 12128,
+      "score": {
+        "ai_probability": 0.5146,
+        "human_probability": 0.4854,
+        "confidence": 0.9184,
+        "evidence_score": 0.073,
+        "risk_score": 0.4725,
+        "classification": "uncertain",
+        "reasons": [
+          "17 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    },
+    {
+      "level": "folder",
+      "identifier": "src/click",
+      "name": "src/click",
+      "language": null,
+      "path": "src/click",
+      "start_line": null,
+      "end_line": null,
+      "loc": 12128,
+      "score": {
+        "ai_probability": 0.5146,
+        "human_probability": 0.4854,
+        "confidence": 0.9184,
+        "evidence_score": 0.073,
+        "risk_score": 0.4725,
+        "classification": "uncertain",
+        "reasons": [
+          "17 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    },
+    {
+      "level": "folder",
+      "identifier": "tests",
+      "name": "tests",
+      "language": null,
+      "path": "tests",
+      "start_line": null,
+      "end_line": null,
+      "loc": 13407,
+      "score": {
+        "ai_probability": 0.5161,
+        "human_probability": 0.4839,
+        "confidence": 0.8399,
+        "evidence_score": 0.073,
+        "risk_score": 0.4335,
+        "classification": "uncertain",
+        "reasons": [
+          "31 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    },
+    {
+      "level": "folder",
+      "identifier": "docs",
+      "name": "docs",
+      "language": null,
+      "path": "docs",
+      "start_line": null,
+      "end_line": null,
+      "loc": 6574,
+      "score": {
+        "ai_probability": 0.5802,
+        "human_probability": 0.4198,
+        "confidence": 0.673,
+        "evidence_score": 0.073,
+        "risk_score": 0.3904,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "38 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    },
+    {
+      "level": "folder",
+      "identifier": "examples",
+      "name": "examples",
+      "language": null,
+      "path": "examples",
+      "start_line": null,
+      "end_line": null,
+      "loc": 1461,
+      "score": {
+        "ai_probability": 0.4032,
+        "human_probability": 0.5968,
+        "confidence": 0.9131,
+        "evidence_score": 0.073,
+        "risk_score": 0.3681,
+        "classification": "likely_human",
+        "reasons": [
+          "35 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    },
+    {
+      "level": "folder",
+      "identifier": ".github/workflows",
+      "name": ".github/workflows",
+      "language": null,
+      "path": ".github/workflows",
+      "start_line": null,
+      "end_line": null,
+      "loc": 250,
+      "score": {
+        "ai_probability": 0.4325,
+        "human_probability": 0.5675,
+        "confidence": 0.8366,
+        "evidence_score": 0.073,
+        "risk_score": 0.3618,
+        "classification": "uncertain",
+        "reasons": [
+          "6 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    },
+    {
+      "level": "folder",
+      "identifier": ".github",
+      "name": ".github",
+      "language": null,
+      "path": ".github",
+      "start_line": null,
+      "end_line": null,
+      "loc": 329,
+      "score": {
+        "ai_probability": 0.4267,
+        "human_probability": 0.5733,
+        "confidence": 0.8369,
+        "evidence_score": 0.073,
+        "risk_score": 0.3571,
+        "classification": "uncertain",
+        "reasons": [
+          "10 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    },
+    {
+      "level": "folder",
+      "identifier": ".",
+      "name": ".",
+      "language": null,
+      "path": ".",
+      "start_line": null,
+      "end_line": null,
+      "loc": 1957,
+      "score": {
+        "ai_probability": 0.4935,
+        "human_probability": 0.5065,
+        "confidence": 0.6397,
+        "evidence_score": 0.073,
+        "risk_score": 0.3157,
+        "classification": "uncertain",
+        "reasons": [
+          "8 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    }
+  ],
+  "functions": [
+    {
+      "level": "method",
+      "identifier": "src/click/core.py::__init__",
+      "name": "__init__",
+      "language": "python",
+      "path": "src/click/core.py",
+      "start_line": 336,
+      "end_line": 510,
+      "loc": 175,
+      "score": {
+        "ai_probability": 0.5252,
+        "human_probability": 0.4748,
+        "confidence": 0.5838,
+        "evidence_score": 0.2952,
+        "risk_score": 0.3066,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.2 words / 6 chars.",
+          "[excessive_documentation, leans AI] Comment-to-code ratio 65% (high).",
+          "[generic_comments, leans AI] 2 LLM-typical comment phrase(s) over 58 comment line(s).",
+          "[repetitive_patterns, leans AI] 4-gram repetition 10%; compressibility 30%.",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.35 (lower is more repetitive).",
+          "[code_entropy, leans human] Normalized token entropy 0.81 (lower is more predictable)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.5477733398493292,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 10%; compressibility 30%.",
+          "evidence": []
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2977950819672131,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.2 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "55% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.48667590492393353,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 18; 1% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.5475409836065575,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.35 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.4841229647349985,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.81 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5721264367816091,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "2 LLM-typical comment phrase(s) over 58 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 2 phrasing(s) common in LLM output (e.g. 'this will', 'by default').",
+              "severity": 0.5721264367816091,
+              "path": "src/click/core.py",
+              "start_line": 336,
+              "end_line": null,
+              "snippet": ": onwards to a subcommand. By default it's None, but it can be",
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "excessive_documentation",
+          "detector": "llm_fingerprint",
+          "score": 0.7011235955056181,
+          "weight": 0.8,
+          "confidence": 1.0,
+          "reason": "Comment-to-code ratio 65% (high).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "excessive_documentation",
+              "message": "Unusually high comment-to-code ratio (65%).",
+              "severity": 0.7011235955056181,
+              "path": "src/click/core.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": "Context"
+    },
+    {
+      "level": "class",
+      "identifier": "src/click/_termui_impl.py::ProgressBar",
+      "name": "ProgressBar",
+      "language": "python",
+      "path": "src/click/_termui_impl.py",
+      "start_line": 57,
+      "end_line": 386,
+      "loc": 330,
+      "score": {
+        "ai_probability": 0.5548,
+        "human_probability": 0.4452,
+        "confidence": 0.4772,
+        "evidence_score": 0.2976,
+        "risk_score": 0.2648,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[generic_comments, leans AI] 3 LLM-typical comment phrase(s) over 24 comment line(s).",
+          "[descriptive_naming, leans human] Avg identifier 1.2 words / 5 chars.",
+          "[repetitive_patterns, leans AI] 4-gram repetition 18%; compressibility 28%.",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.24 (lower is more repetitive).",
+          "[naming_consistency, leans human] 57% of identifiers share one convention (note: also explained by linters).",
+          "[formatting_regularity, leans human] Line-length stdev 17; 1% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.603727548645731,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 18%; compressibility 28%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 18%, compresses to 28% of size).",
+              "severity": 0.603727548645731,
+              "path": "src/click/_termui_impl.py",
+              "start_line": 57,
+              "end_line": 386,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.2 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "57% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.47384120882365455,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 17; 1% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.6555953446732319,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.24 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.508601259808292,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.77 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.690625,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "3 LLM-typical comment phrase(s) over 24 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 3 phrasing(s) common in LLM output (e.g. 'this function', 'for example,', 'this allows').",
+              "severity": 0.690625,
+              "path": "src/click/_termui_impl.py",
+              "start_line": 57,
+              "end_line": null,
+              "snippet": "There are no standard streams attached to write to. For example,",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "class",
+      "identifier": "src/click/core.py::Command",
+      "name": "Command",
+      "language": "python",
+      "path": "src/click/core.py",
+      "start_line": 956,
+      "end_line": 1583,
+      "loc": 628,
+      "score": {
+        "ai_probability": 0.5373,
+        "human_probability": 0.4627,
+        "confidence": 0.4853,
+        "evidence_score": 0.2919,
+        "risk_score": 0.2607,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+          "[generic_comments, leans AI] 3 LLM-typical comment phrase(s) over 48 comment line(s).",
+          "[repetitive_patterns, leans AI] 4-gram repetition 21%; compressibility 27%.",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.24 (lower is more repetitive).",
+          "[code_entropy, leans AI] Normalized token entropy 0.75 (lower is more predictable).",
+          "[formatting_regularity, leans human] Line-length stdev 21; 4% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6233373635626465,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 21%; compressibility 27%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 21%, compresses to 27% of size).",
+              "severity": 0.6233373635626465,
+              "path": "src/click/core.py",
+              "start_line": 956,
+              "end_line": 1583,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "57% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.46676643851254696,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 21; 4% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.662765121759623,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.24 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5152298750211838,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.75 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.6203125,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "3 LLM-typical comment phrase(s) over 48 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 3 phrasing(s) common in LLM output (e.g. 'note that', 'we now', 'this will').",
+              "severity": 0.6203125,
+              "path": "src/click/core.py",
+              "start_line": 956,
+              "end_line": null,
+              "snippet": "avoid creating it multiple times. Not doing this will break the",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "class",
+      "identifier": "src/click/parser.py::_OptionParser",
+      "name": "_OptionParser",
+      "language": "python",
+      "path": "src/click/parser.py",
+      "start_line": 224,
+      "end_line": 500,
+      "loc": 277,
+      "score": {
+        "ai_probability": 0.5002,
+        "human_probability": 0.4998,
+        "confidence": 0.5068,
+        "evidence_score": 0.2006,
+        "risk_score": 0.2535,
+        "classification": "uncertain",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 5 chars.",
+          "[generic_comments, leans AI] 2 LLM-typical comment phrase(s) over 52 comment line(s).",
+          "[repetitive_patterns, leans AI] 4-gram repetition 16%; compressibility 31%.",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.29 (lower is more repetitive).",
+          "[code_entropy, leans human] Normalized token entropy 0.81 (lower is more predictable).",
+          "[formatting_regularity, leans human] Line-length stdev 21; 1% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.5794153222081491,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 16%; compressibility 31%.",
+          "evidence": []
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "64% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.4623028463864436,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 21; 1% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.6055417700578991,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.29 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.48457883058302365,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.81 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.576602564102564,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "2 LLM-typical comment phrase(s) over 52 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 2 phrasing(s) common in LLM output (e.g. 'note that', 'this allows').",
+              "severity": 0.576602564102564,
+              "path": "src/click/parser.py",
+              "start_line": 224,
+              "end_line": null,
+              "snippet": "the long option matching code.  Note that this allows options",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "class",
+      "identifier": "src/click/core.py::Context",
+      "name": "Context",
+      "language": "python",
+      "path": "src/click/core.py",
+      "start_line": 204,
+      "end_line": 953,
+      "loc": 750,
+      "score": {
+        "ai_probability": 0.5176,
+        "human_probability": 0.4824,
+        "confidence": 0.4882,
+        "evidence_score": 0.285,
+        "risk_score": 0.2527,
+        "classification": "uncertain",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+          "[repetitive_patterns, leans AI] 4-gram repetition 20%; compressibility 27%.",
+          "[generic_comments, leans AI] 2 LLM-typical comment phrase(s) over 73 comment line(s).",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.22 (lower is more repetitive).",
+          "[formatting_regularity, leans human] Line-length stdev 21; 2% of lines near a round width (note: also explained by auto-formatters).",
+          "[naming_consistency, leans human] 60% of identifiers share one convention (note: also explained by linters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6191406300437926,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 20%; compressibility 27%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 20%, compresses to 27% of size).",
+              "severity": 0.6191406300437926,
+              "path": "src/click/core.py",
+              "start_line": 204,
+              "end_line": 953,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "60% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.46595178501284085,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 21; 2% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.678594249201278,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.22 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5110283606911501,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.76 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5641552511415525,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "2 LLM-typical comment phrase(s) over 73 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 2 phrasing(s) common in LLM output (e.g. 'this will', 'by default').",
+              "severity": 0.5641552511415525,
+              "path": "src/click/core.py",
+              "start_line": 204,
+              "end_line": null,
+              "snippet": ": onwards to a subcommand. By default it's None, but it can be",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "class",
+      "identifier": "src/click/core.py::Parameter",
+      "name": "Parameter",
+      "language": "python",
+      "path": "src/click/core.py",
+      "start_line": 2139,
+      "end_line": 2802,
+      "loc": 664,
+      "score": {
+        "ai_probability": 0.5104,
+        "human_probability": 0.4896,
+        "confidence": 0.4894,
+        "evidence_score": 0.2816,
+        "risk_score": 0.2498,
+        "classification": "uncertain",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 5 chars.",
+          "[repetitive_patterns, leans AI] 4-gram repetition 21%; compressibility 28%.",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.22 (lower is more repetitive).",
+          "[generic_comments, leans AI] 1 LLM-typical comment phrase(s) over 76 comment line(s).",
+          "[code_entropy, leans AI] Normalized token entropy 0.76 (lower is more predictable).",
+          "[naming_consistency, leans human] 64% of identifiers share one convention (note: also explained by linters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6215739648135702,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 21%; compressibility 28%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 21%, compresses to 28% of size).",
+              "severity": 0.6215739648135702,
+              "path": "src/click/core.py",
+              "start_line": 2139,
+              "end_line": 2802,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "64% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.4949398655472451,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 23; 7% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.6840599455040872,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.22 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5147421751092945,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.76 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5314692982456141,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "1 LLM-typical comment phrase(s) over 76 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 1 phrasing(s) common in LLM output (e.g. 'by default').",
+              "severity": 0.5314692982456141,
+              "path": "src/click/core.py",
+              "start_line": 2139,
+              "end_line": null,
+              "snippet": "parser, otherwise it left unset by default.",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "method",
+      "identifier": "src/click/core.py::main",
+      "name": "main",
+      "language": "python",
+      "path": "src/click/core.py",
+      "start_line": 1436,
+      "end_line": 1547,
+      "loc": 112,
+      "score": {
+        "ai_probability": 0.4754,
+        "human_probability": 0.5246,
+        "confidence": 0.5233,
+        "evidence_score": 0.2023,
+        "risk_score": 0.2488,
+        "classification": "uncertain",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 5 chars.",
+          "[generic_comments, leans AI] 1 LLM-typical comment phrase(s) over 16 comment line(s).",
+          "[repetitive_patterns, leans AI] 4-gram repetition 9%; compressibility 34%.",
+          "[code_entropy, leans human] Normalized token entropy 0.85 (lower is more predictable).",
+          "[vocabulary_richness, leans human] Identifier type-token ratio 0.44 (lower is more repetitive).",
+          "[naming_consistency, leans human] 65% of identifiers share one convention (note: also explained by linters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.5316124216087649,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 9%; compressibility 34%.",
+          "evidence": []
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "65% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.48886843777425215,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 21; 6% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.45728155339805826,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.44 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.4553961192791317,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.85 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5869791666666667,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "1 LLM-typical comment phrase(s) over 16 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 1 phrasing(s) common in LLM output (e.g. 'note that').",
+              "severity": 0.5869791666666667,
+              "path": "src/click/core.py",
+              "start_line": 1436,
+              "end_line": null,
+              "snippet": "note that `rv` may actually contain data like \"1\" which",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": "Command"
+    },
+    {
+      "level": "class",
+      "identifier": "src/click/core.py::Option",
+      "name": "Option",
+      "language": "python",
+      "path": "src/click/core.py",
+      "start_line": 2805,
+      "end_line": 3542,
+      "loc": 738,
+      "score": {
+        "ai_probability": 0.5168,
+        "human_probability": 0.4832,
+        "confidence": 0.4797,
+        "evidence_score": 0.2835,
+        "risk_score": 0.2479,
+        "classification": "uncertain",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 5 chars.",
+          "[repetitive_patterns, leans AI] 4-gram repetition 19%; compressibility 27%.",
+          "[generic_comments, leans AI] 2 LLM-typical comment phrase(s) over 90 comment line(s).",
+          "[vocabulary_richness, leans AI] Identifier type-token ratio 0.18 (lower is more repetitive).",
+          "[formatting_regularity, leans human] Line-length stdev 22; 5% of lines near a round width (note: also explained by auto-formatters).",
+          "[naming_consistency, leans human] 48% of identifiers share one convention (note: also explained by linters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.6118025597829875,
+          "weight": 1.0,
+          "confidence": 1.0,
+          "reason": "4-gram repetition 19%; compressibility 27%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 19%, compresses to 27% of size).",
+              "severity": 0.6118025597829875,
+              "path": "src/click/core.py",
+              "start_line": 2805,
+              "end_line": 3542,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "48% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.46212599343488964,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "Line-length stdev 22; 5% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.7179782469609726,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.18 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.5118023621972447,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.76 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5583333333333333,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "2 LLM-typical comment phrase(s) over 90 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 2 phrasing(s) common in LLM output (e.g. 'here we', 'in order to').",
+              "severity": 0.5583333333333333,
+              "path": "src/click/core.py",
+              "start_line": 2805,
+              "end_line": null,
+              "snippet": "Here we replace each occurrence of value-less flags (marked by the",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    }
+  ],
+  "snippets": [],
+  "commit_analysis": {
+    "available": true,
+    "total_commits": 2101,
+    "total_authors": 463,
+    "score": {
+      "ai_probability": 0.4528,
+      "human_probability": 0.5472,
+      "confidence": 0.2231,
+      "evidence_score": 0.073,
+      "risk_score": 0.101,
+      "classification": "uncertain",
+      "reasons": [
+        "[one_shot_commits, leans human] Largest commit holds 5% of insertions over 2101 commits.",
+        "[generic_commit_messages, leans human] 0% of commit messages are generic (e.g. 'update', 'fix')."
+      ]
+    },
+    "signals": [
+      {
+        "name": "one_shot_commits",
+        "detector": "commit_history",
+        "score": 0.45,
+        "weight": 1.2,
+        "confidence": 1.0,
+        "reason": "Largest commit holds 5% of insertions over 2101 commits.",
+        "evidence": []
+      },
+      {
+        "name": "generic_commit_messages",
+        "detector": "commit_history",
+        "score": 0.48066634935744884,
+        "weight": 0.8,
+        "confidence": 1.0,
+        "reason": "0% of commit messages are generic (e.g. 'update', 'fix').",
+        "evidence": []
+      }
+    ],
+    "timeline": [
+      {
+        "sha": "03d3b8a313f2676380f6a34a080b3ca09423082e",
+        "author": "Edward G",
+        "author_email": "edward.g2013@gmail.com",
+        "timestamp": "2026-06-05T23:00:17-07:00",
+        "message": "Move changes to markdown",
+        "insertions": 1557,
+        "deletions": 1508,
+        "files_changed": 3
+      },
+      {
+        "sha": "237be507dbe3e653f6b41b3ea53266805534e8cd",
+        "author": "Edward G",
+        "author_email": "edward.g2013@gmail.com",
+        "timestamp": "2026-06-05T22:52:09-07:00",
+        "message": "Move changes headings down a level.",
+        "insertions": 1556,
+        "deletions": 0,
+        "files_changed": 1
+      },
+      {
+        "sha": "a0232a8ffc75269dd10af67881538b12bdf95a9c",
+        "author": "Edward G",
+        "author_email": "edward.g2013@gmail.com",
+        "timestamp": "2026-06-05T22:31:41-07:00",
+        "message": "Convert changes to markdown.",
+        "insertions": 2,
+        "deletions": 1507,
+        "files_changed": 2
+      },
+      {
+        "sha": "5ec03bdba195737aeb8f5b3d9625607c41a35236",
+        "author": "Kevin Deldycke",
+        "author_email": "kevin@deldycke.com",
+        "timestamp": "2026-06-04T17:48:47+05:00",
+        "message": "Run nightly tests on both `main` and `stable` branches",
+        "insertions": 7,
+        "deletions": 5,
+        "files_changed": 1
+      },
+      {
+        "sha": "051bb0f30b545cf7426deef819811815297c2798",
+        "author": "Kevin Deldycke",
+        "author_email": "kevin@deldycke.com",
+        "timestamp": "2026-05-29T15:30:33+02:00",
+        "message": "Do not let the GC close a borrowed `stdout`",
+        "insertions": 112,
+        "deletions": 27,
+        "files_changed": 4
+      }
+    ],
+    "reasons": [
+      "[one_shot_commits, leans human] Largest commit holds 5% of insertions over 2101 commits.",
+      "[generic_commit_messages, leans human] 0% of commit messages are generic (e.g. 'update', 'fix')."
+    ]
+  },
+  "contributor_analysis": {
+    "available": true,
+    "contributors": [
+      {
+        "name": "Armin Ronacher",
+        "email": "armin.ronacher@active-4.com",
+        "commits": 465,
+        "insertions": 20652,
+        "deletions": 5201,
+        "first_commit": "2014-04-24T11:51:55+02:00",
+        "last_commit": "2018-12-20T17:37:33+01:00"
+      },
+      {
+        "name": "David Lord",
+        "email": "davidism@gmail.com",
+        "commits": 326,
+        "insertions": 19338,
+        "deletions": 18349,
+        "first_commit": "2018-05-29T09:30:16-07:00",
+        "last_commit": "2026-05-22T21:40:47-07:00"
+      },
+      {
+        "name": "Kevin Deldycke",
+        "email": "kevin@deldycke.com",
+        "commits": 121,
+        "insertions": 8656,
+        "deletions": 1981,
+        "first_commit": "2023-06-09T08:15:14+04:00",
+        "last_commit": "2026-06-04T17:48:47+05:00"
+      },
+      {
+        "name": "Edward G",
+        "email": "edward.g2013@gmail.com",
+        "commits": 82,
+        "insertions": 5843,
+        "deletions": 5133,
+        "first_commit": "2023-05-13T17:00:42-07:00",
+        "last_commit": "2026-06-05T23:00:17-07:00"
+      },
+      {
+        "name": "Markus Unterwaditzer",
+        "email": "markus@unterwaditzer.net",
+        "commits": 64,
+        "insertions": 561,
+        "deletions": 145,
+        "first_commit": "2014-06-05T14:02:26+02:00",
+        "last_commit": "2017-08-18T19:54:26+02:00"
+      }
+    ],
+    "reasons": [
+      "463 contributor(s) detected."
+    ]
+  },
+  "attribution": [
+    {
+      "source": "claude",
+      "probability": 0.13283846153846154,
+      "rationale": "Claude-family: matched phrasing 'note that'.",
+      "confidence": 0.15
+    },
+    {
+      "source": "gemini",
+      "probability": 0.13283846153846154,
+      "rationale": "Gemini-family: matched phrasing 'here is'.",
+      "confidence": 0.15
+    },
+    {
+      "source": "chatgpt",
+      "probability": 0.07590769230769231,
+      "rationale": "ChatGPT / GPT-family: no distinctive phrasing matched; included for completeness.",
+      "confidence": 0.15
+    },
+    {
+      "source": "copilot",
+      "probability": 0.07590769230769231,
+      "rationale": "GitHub Copilot / inline completion: no distinctive phrasing matched; included for completeness.",
+      "confidence": 0.15
+    },
+    {
+      "source": "other_llm",
+      "probability": 0.07590769230769231,
+      "rationale": "Other / unknown LLM: no distinctive phrasing matched; included for completeness.",
+      "confidence": 0.15
+    }
+  ],
+  "reasons": [
+    "[descriptive_naming, leans human] mean score 0.31 across 84 place(s).",
+    "[repetitive_patterns, leans AI] mean score 0.57 across 83 place(s).",
+    "[formatting_regularity, leans human] mean score 0.44 across 76 place(s).",
+    "[vocabulary_richness, leans AI] mean score 0.53 across 65 place(s).",
+    "[generic_comments, leans AI] mean score 0.58 across 10 place(s).",
+    "[repeated_boilerplate, leans AI] Cross-file duplicated-line ratio 24%.",
+    "[chatbot_wording, leans AI] mean score 0.58 across 4 place(s).",
+    "[cross_file_style_uniformity, leans AI] Per-file mean line length CV=0.23 across 84 files."
+  ],
+  "evidence": [
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 65%, compresses to 18% of size).",
+      "severity": 0.7379191511750263,
+      "path": "tests/test_options.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    },
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 57%, compresses to 20% of size).",
+      "severity": 0.7324566181432566,
+      "path": "tests/test_basic.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    },
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 62%, compresses to 20% of size).",
+      "severity": 0.7317488386361645,
+      "path": "tests/test_shell_completion.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    },
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 49%, compresses to 20% of size).",
+      "severity": 0.7303681441618687,
+      "path": "tests/test_context.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    },
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 50%, compresses to 20% of size).",
+      "severity": 0.7303201698812708,
+      "path": "tests/test_testing.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    },
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 53%, compresses to 22% of size).",
+      "severity": 0.7259888262095899,
+      "path": "tests/test_arguments.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    },
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 51%, compresses to 22% of size).",
+      "severity": 0.7255925221799746,
+      "path": "tests/test_chain.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    },
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 48%, compresses to 22% of size).",
+      "severity": 0.7248754226814472,
+      "path": "tests/test_formatting.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    }
+  ],
+  "visualizations": {
+    "folder_heatmap": [
+      {
+        "path": "src",
+        "ai_probability": 0.5146,
+        "confidence": 0.9184,
+        "classification": "uncertain",
+        "files": 17
+      },
+      {
+        "path": "src/click",
+        "ai_probability": 0.5146,
+        "confidence": 0.9184,
+        "classification": "uncertain",
+        "files": 17
+      },
+      {
+        "path": "tests",
+        "ai_probability": 0.5161,
+        "confidence": 0.8399,
+        "classification": "uncertain",
+        "files": 31
+      },
+      {
+        "path": "docs",
+        "ai_probability": 0.5802,
+        "confidence": 0.673,
+        "classification": "possibly_ai_assisted",
+        "files": 38
+      },
+      {
+        "path": "examples",
+        "ai_probability": 0.4032,
+        "confidence": 0.9131,
+        "classification": "likely_human",
+        "files": 35
+      },
+      {
+        "path": ".github/workflows",
+        "ai_probability": 0.4325,
+        "confidence": 0.8366,
+        "classification": "uncertain",
+        "files": 6
+      },
+      {
+        "path": ".github",
+        "ai_probability": 0.4267,
+        "confidence": 0.8369,
+        "classification": "uncertain",
+        "files": 10
+      },
+      {
+        "path": ".",
+        "ai_probability": 0.4935,
+        "confidence": 0.6397,
+        "classification": "uncertain",
+        "files": 8
+      }
+    ],
+    "file_heatmap": [
+      {
+        "path": "src/click/_termui_impl.py",
+        "ai_probability": 0.5354,
+        "confidence": 0.4827,
+        "classification": "possibly_ai_assisted",
+        "loc": 946,
+        "language": "python"
+      },
+      {
+        "path": "src/click/core.py",
+        "ai_probability": 0.572,
+        "confidence": 0.447,
+        "classification": "possibly_ai_assisted",
+        "loc": 3677,
+        "language": "python"
+      },
+      {
+        "path": "tests/test_utils.py",
+        "ai_probability": 0.5493,
+        "confidence": 0.4655,
+        "classification": "possibly_ai_assisted",
+        "loc": 858,
+        "language": "python"
+      },
+      {
+        "path": "tests/test_commands.py",
+        "ai_probability": 0.5548,
+        "confidence": 0.4606,
+        "classification": "possibly_ai_assisted",
+        "loc": 651,
+        "language": "python"
+      },
+      {
+        "path": "src/click/parser.py",
+        "ai_probability": 0.5229,
+        "confidence": 0.4861,
+        "classification": "possibly_ai_assisted",
+        "loc": 534,
+        "language": "python"
+      },
+      {
+        "path": "src/click/shell_completion.py",
+        "ai_probability": 0.5222,
+        "confidence": 0.4867,
+        "classification": "possibly_ai_assisted",
+        "loc": 682,
+        "language": "python"
+      },
+      {
+        "path": "src/click/utils.py",
+        "ai_probability": 0.5036,
+        "confidence": 0.4992,
+        "classification": "uncertain",
+        "loc": 648,
+        "language": "python"
+      },
+      {
+        "path": "src/click/types.py",
+        "ai_probability": 0.546,
+        "confidence": 0.4602,
+        "classification": "possibly_ai_assisted",
+        "loc": 1375,
+        "language": "python"
+      }
+    ],
+    "classification_pie": [
+      {
+        "label": "possibly_ai_assisted",
+        "value": 23
+      },
+      {
+        "label": "uncertain",
+        "value": 111
+      },
+      {
+        "label": "likely_human",
+        "value": 7
+      }
+    ],
+    "commit_timeline": [
+      {
+        "sha": "03d3b8a313",
+        "date": "2026-06-05T23:00:17-07:00",
+        "insertions": 1557,
+        "deletions": 1508,
+        "files_changed": 3,
+        "message": "Move changes to markdown"
+      },
+      {
+        "sha": "237be507db",
+        "date": "2026-06-05T22:52:09-07:00",
+        "insertions": 1556,
+        "deletions": 0,
+        "files_changed": 1,
+        "message": "Move changes headings down a level."
+      },
+      {
+        "sha": "a0232a8ffc",
+        "date": "2026-06-05T22:31:41-07:00",
+        "insertions": 2,
+        "deletions": 1507,
+        "files_changed": 2,
+        "message": "Convert changes to markdown."
+      },
+      {
+        "sha": "5ec03bdba1",
+        "date": "2026-06-04T17:48:47+05:00",
+        "insertions": 7,
+        "deletions": 5,
+        "files_changed": 1,
+        "message": "Run nightly tests on both `main` and `stable` branches"
+      },
+      {
+        "sha": "051bb0f30b",
+        "date": "2026-05-29T15:30:33+02:00",
+        "insertions": 112,
+        "deletions": 27,
+        "files_changed": 4,
+        "message": "Do not let the GC close a borrowed `stdout`"
+      }
+    ],
+    "contributor_activity": [
+      {
+        "name": "Armin Ronacher",
+        "commits": 465,
+        "insertions": 20652,
+        "deletions": 5201,
+        "first_commit": "2014-04-24T11:51:55+02:00",
+        "last_commit": "2018-12-20T17:37:33+01:00"
+      },
+      {
+        "name": "David Lord",
+        "commits": 326,
+        "insertions": 19338,
+        "deletions": 18349,
+        "first_commit": "2018-05-29T09:30:16-07:00",
+        "last_commit": "2026-05-22T21:40:47-07:00"
+      },
+      {
+        "name": "Kevin Deldycke",
+        "commits": 121,
+        "insertions": 8656,
+        "deletions": 1981,
+        "first_commit": "2023-06-09T08:15:14+04:00",
+        "last_commit": "2026-06-04T17:48:47+05:00"
+      },
+      {
+        "name": "Edward G",
+        "commits": 82,
+        "insertions": 5843,
+        "deletions": 5133,
+        "first_commit": "2023-05-13T17:00:42-07:00",
+        "last_commit": "2026-06-05T23:00:17-07:00"
+      },
+      {
+        "name": "Markus Unterwaditzer",
+        "commits": 64,
+        "insertions": 561,
+        "deletions": 145,
+        "first_commit": "2014-06-05T14:02:26+02:00",
+        "last_commit": "2017-08-18T19:54:26+02:00"
+      }
+    ],
+    "signal_breakdown": [
+      {
+        "signal": "descriptive_naming",
+        "mean_score": 0.3075,
+        "count": 84,
+        "mean_confidence": 0.8265
+      },
+      {
+        "signal": "repeated_boilerplate",
+        "mean_score": 0.6357,
+        "count": 1,
+        "mean_confidence": 0.85
+      },
+      {
+        "signal": "cross_file_style_uniformity",
+        "mean_score": 0.6034,
+        "count": 1,
+        "mean_confidence": 0.8
+      },
+      {
+        "signal": "excessive_documentation",
+        "mean_score": 0.6,
+        "count": 1,
+        "mean_confidence": 0.2333
+      },
+      {
+        "signal": "uniform_function_lengths",
+        "mean_score": 0.4,
+        "count": 1,
+        "mean_confidence": 1.0
+      },
+      {
+        "signal": "chatbot_wording",
+        "mean_score": 0.5833,
+        "count": 4,
+        "mean_confidence": 1.0
+      },
+      {
+        "signal": "generic_comments",
+        "mean_score": 0.5762,
+        "count": 10,
+        "mean_confidence": 1.0
+      },
+      {
+        "signal": "uniform_file_sizes",
+        "mean_score": 0.43,
+        "count": 1,
+        "mean_confidence": 1.0
+      },
+      {
+        "signal": "repetitive_patterns",
+        "mean_score": 0.5692,
+        "count": 83,
+        "mean_confidence": 0.6381
+      },
+      {
+        "signal": "formatting_regularity",
+        "mean_score": 0.436,
+        "count": 76,
+        "mean_confidence": 0.4657
+      },
+      {
+        "signal": "predictable_complexity",
+        "mean_score": 0.44,
+        "count": 1,
+        "mean_confidence": 1.0
+      },
+      {
+        "signal": "excessive_bullets",
+        "mean_score": 0.5584,
+        "count": 3,
+        "mean_confidence": 0.7917
+      }
+    ],
+    "similarity_matrix": {
+      "labels": [
+        "src/click/core.py",
+        "tests/test_options.py",
+        "CHANGES.md",
+        "tests/test_termui.py",
+        "src/click/types.py"
+      ],
+      "matrix": [
+        [
+          1.0,
+          0.015,
+          0.009,
+          0.008,
+          0.03
+        ],
+        [
+          0.015,
+          1.0,
+          0.003,
+          0.051,
+          0.009
+        ],
+        [
+          0.009,
+          0.003,
+          1.0,
+          0.002,
+          0.003
+        ],
+        [
+          0.008,
+          0.051,
+          0.002,
+          1.0,
+          0.008
+        ],
+        [
+          0.03,
+          0.009,
+          0.003,
+          0.008,
+          1.0
+        ]
+      ]
+    },
+    "dependency_graph": {
+      "nodes": [
+        {
+          "id": ".editorconfig",
+          "language": "unknown",
+          "loc": 14
+        },
+        {
+          "id": ".gitignore",
+          "language": "unknown",
+          "loc": 10
+        },
+        {
+          "id": ".pre-commit-config.yaml",
+          "language": "yaml",
+          "loc": 25
+        },
+        {
+          "id": ".readthedocs.yaml",
+          "language": "yaml",
+          "loc": 18
+        },
+        {
+          "id": "CHANGES.md",
+          "language": "markdown",
+          "loc": 1566
+        },
+        {
+          "id": "LICENSE.txt",
+          "language": "unknown",
+          "loc": 29
+        },
+        {
+          "id": "README.md",
+          "language": "markdown",
+          "loc": 63
+        },
+        {
+          "id": "pyproject.toml",
+          "language": "toml",
+          "loc": 232
+        }
+      ],
+      "edges": [
+        {
+          "source": "examples/complex/complex/commands/cmd_init.py",
+          "target": "docs/complex.md"
+        },
+        {
+          "source": "examples/complex/complex/commands/cmd_status.py",
+          "target": "docs/complex.md"
+        },
+        {
+          "source": "src/click/__init__.py",
+          "target": "examples/imagepipe/.gitignore"
+        },
+        {
+          "source": "src/click/__init__.py",
+          "target": "examples/imagepipe/.gitignore"
+        },
+        {
+          "source": "src/click/__init__.py",
+          "target": "examples/imagepipe/.gitignore"
+        },
+        {
+          "source": "src/click/__init__.py",
+          "target": "examples/imagepipe/.gitignore"
+        },
+        {
+          "source": "src/click/__init__.py",
+          "target": "examples/imagepipe/.gitignore"
+        },
+        {
+          "source": "src/click/__init__.py",
+          "target": "examples/imagepipe/.gitignore"
+        }
+      ]
+    }
+  },
+  "recommendations": [
+    "Treat every score here as a probabilistic estimate, never as proof of AI authorship."
+  ],
+  "warnings": [],
+  "elapsed_seconds": 1.497,
+  "engine_version": "0.1.0",
+  "disclaimer": "These results are probabilistic estimates, not proof. AI-authorship detection is inherently uncertain and produces both false positives and false negatives. Do not use these scores as the sole basis for any consequential decision about a person or project.",
+  "generated_at": "2026-06-23T10:48:33.877619Z",
+  "_note": "Truncated example: files/functions/folders/evidence/visualizations limited for readability."
+}

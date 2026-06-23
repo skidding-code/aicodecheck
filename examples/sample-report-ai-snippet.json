@@ -1,0 +1,677 @@
+{
+  "id": "0085c283860a48e8a76a8d3529a36b99",
+  "schema_version": 1,
+  "target": {
+    "kind": "snippet",
+    "name": "calculate_statistics_helper.py",
+    "source": "<snippet>",
+    "owner": null,
+    "repo": null,
+    "ref": null,
+    "languages": {
+      "python": 1
+    },
+    "total_files": 1,
+    "analyzed_files": 1,
+    "skipped_files": 0,
+    "total_loc": 77,
+    "bytes_scanned": 2504
+  },
+  "overall_ai_probability": 0.5532,
+  "human_probability": 0.4468,
+  "classification": "possibly_ai_assisted",
+  "confidence": 0.4497,
+  "score": {
+    "ai_probability": 0.5532,
+    "human_probability": 0.4468,
+    "confidence": 0.4497,
+    "evidence_score": 0.3059,
+    "risk_score": 0.2488,
+    "classification": "possibly_ai_assisted",
+    "reasons": [
+      "[generic_comments, leans AI] 3 LLM-typical comment phrase(s) over 15 comment line(s).",
+      "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+      "[repetitive_patterns, leans AI] 4-gram repetition 19%; compressibility 34%.",
+      "[code_entropy, leans human] Normalized token entropy 0.88 (lower is more predictable).",
+      "[formatting_regularity, leans human] Line-length stdev 22; 0% of lines near a round width (note: also explained by auto-formatters).",
+      "[naming_consistency, leans human] 64% of identifiers share one convention (note: also explained by linters).",
+      "[vocabulary_richness, leans AI] Identifier type-token ratio 0.38 (lower is more repetitive).",
+      "[repeated_boilerplate, leans human] Cross-file duplicated-line ratio 9%."
+    ]
+  },
+  "files": [
+    {
+      "level": "file",
+      "identifier": "calculate_statistics_helper.py",
+      "name": "calculate_statistics_helper.py",
+      "language": "python",
+      "path": "calculate_statistics_helper.py",
+      "start_line": null,
+      "end_line": null,
+      "loc": 77,
+      "score": {
+        "ai_probability": 0.5538,
+        "human_probability": 0.4462,
+        "confidence": 0.4355,
+        "evidence_score": 0.3059,
+        "risk_score": 0.2412,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "[generic_comments, leans AI] 3 LLM-typical comment phrase(s) over 15 comment line(s).",
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+          "[repetitive_patterns, leans AI] 4-gram repetition 19%; compressibility 34%.",
+          "[code_entropy, leans human] Normalized token entropy 0.88 (lower is more predictable).",
+          "[formatting_regularity, leans human] Line-length stdev 22; 0% of lines near a round width (note: also explained by auto-formatters).",
+          "[naming_consistency, leans human] 64% of identifiers share one convention (note: also explained by linters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.5925010866966595,
+          "weight": 1.0,
+          "confidence": 0.8216666666666667,
+          "reason": "4-gram repetition 19%; compressibility 34%.",
+          "evidence": [
+            {
+              "detector": "structure",
+              "signal": "repetitive_patterns",
+              "message": "Repetitive token structure (4-gram repetition 19%, compresses to 34% of size).",
+              "severity": 0.5925010866966595,
+              "path": "calculate_statistics_helper.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": null,
+              "data": {}
+            }
+          ]
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.7,
+          "reason": "64% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.44257872654802377,
+          "weight": 0.4,
+          "confidence": 0.5249999999999999,
+          "reason": "Line-length stdev 22; 0% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.5156351791530944,
+          "weight": 0.4,
+          "confidence": 0.8,
+          "reason": "Identifier type-token ratio 0.38 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.44194583378802027,
+          "weight": 0.7,
+          "confidence": 1.0,
+          "reason": "Normalized token entropy 0.88 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.775,
+          "weight": 1.3,
+          "confidence": 1.0,
+          "reason": "3 LLM-typical comment phrase(s) over 15 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 3 phrasing(s) common in LLM output (e.g. 'first, we', 'next, we', 'finally, we').",
+              "severity": 0.775,
+              "path": "calculate_statistics_helper.py",
+              "start_line": null,
+              "end_line": null,
+              "snippet": "First, we check whether the list is empty to avoid division by zero.",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    }
+  ],
+  "folders": [
+    {
+      "level": "folder",
+      "identifier": ".",
+      "name": ".",
+      "language": null,
+      "path": ".",
+      "start_line": null,
+      "end_line": null,
+      "loc": 77,
+      "score": {
+        "ai_probability": 0.5672,
+        "human_probability": 0.4328,
+        "confidence": 0.2562,
+        "evidence_score": 0.073,
+        "risk_score": 0.1453,
+        "classification": "possibly_ai_assisted",
+        "reasons": [
+          "1 files aggregated under this folder."
+        ]
+      },
+      "signals": [],
+      "parent": null
+    }
+  ],
+  "functions": [
+    {
+      "level": "function",
+      "identifier": "calculate_statistics_helper.py::calculate_standard_deviation",
+      "name": "calculate_standard_deviation",
+      "language": "python",
+      "path": "calculate_statistics_helper.py",
+      "start_line": 54,
+      "end_line": 73,
+      "loc": 20,
+      "score": {
+        "ai_probability": 0.4798,
+        "human_probability": 0.5202,
+        "confidence": 0.1687,
+        "evidence_score": 0.2689,
+        "risk_score": 0.081,
+        "classification": "uncertain",
+        "reasons": [
+          "[generic_comments, leans AI] 3 LLM-typical comment phrase(s) over 5 comment line(s).",
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+          "[code_entropy, leans human] Normalized token entropy 0.93 (lower is more predictable).",
+          "[vocabulary_richness, leans human] Identifier type-token ratio 0.52 (lower is more repetitive).",
+          "[repetitive_patterns, leans human] 4-gram repetition 0%; compressibility 43%.",
+          "[naming_consistency, leans human] 59% of identifiers share one convention (note: also explained by linters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.45000034678873635,
+          "weight": 1.0,
+          "confidence": 0.255,
+          "reason": "4-gram repetition 0%; compressibility 43%.",
+          "evidence": []
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.5483333333333333,
+          "reason": "59% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.44387781979454727,
+          "weight": 0.4,
+          "confidence": 0.1575,
+          "reason": "Line-length stdev 23; 0% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.37872340425531914,
+          "weight": 0.4,
+          "confidence": 0.376,
+          "reason": "Identifier type-token ratio 0.52 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.41130073973418063,
+          "weight": 0.7,
+          "confidence": 0.51,
+          "reason": "Normalized token entropy 0.93 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 1.0,
+          "weight": 1.3,
+          "confidence": 0.3333333333333333,
+          "reason": "3 LLM-typical comment phrase(s) over 5 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 3 phrasing(s) common in LLM output (e.g. 'first, we', 'next, we', 'finally, we').",
+              "severity": 1.0,
+              "path": "calculate_statistics_helper.py",
+              "start_line": 54,
+              "end_line": null,
+              "snippet": "First, we calculate the mean of the numbers.",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "function",
+      "identifier": "calculate_statistics_helper.py::calculate_median",
+      "name": "calculate_median",
+      "language": "python",
+      "path": "calculate_statistics_helper.py",
+      "start_line": 29,
+      "end_line": 51,
+      "loc": 23,
+      "score": {
+        "ai_probability": 0.344,
+        "human_probability": 0.656,
+        "confidence": 0.2091,
+        "evidence_score": 0.073,
+        "risk_score": 0.0719,
+        "classification": "uncertain",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+          "[code_entropy, leans human] Normalized token entropy 0.92 (lower is more predictable).",
+          "[vocabulary_richness, leans human] Identifier type-token ratio 0.49 (lower is more repetitive).",
+          "[repetitive_patterns, leans human] 4-gram repetition 1%; compressibility 43%.",
+          "[naming_consistency, leans human] 52% of identifiers share one convention (note: also explained by linters).",
+          "[formatting_regularity, leans human] Line-length stdev 19; 0% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.452152048345301,
+          "weight": 1.0,
+          "confidence": 0.2783333333333333,
+          "reason": "4-gram repetition 1%; compressibility 43%.",
+          "evidence": []
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 1.0,
+          "reason": "Avg identifier 1.1 words / 6 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.47,
+          "weight": 0.4,
+          "confidence": 0.5599999999999999,
+          "reason": "52% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.4527318713648064,
+          "weight": 0.4,
+          "confidence": 0.18375,
+          "reason": "Line-length stdev 19; 0% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.4104166666666667,
+          "weight": 0.4,
+          "confidence": 0.384,
+          "reason": "Identifier type-token ratio 0.49 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.4168414734811605,
+          "weight": 0.7,
+          "confidence": 0.5566666666666666,
+          "reason": "Normalized token entropy 0.92 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.5,
+          "weight": 1.3,
+          "confidence": 0.4,
+          "reason": "0 LLM-typical comment phrase(s) over 6 comment line(s).",
+          "evidence": []
+        }
+      ],
+      "parent": null
+    },
+    {
+      "level": "function",
+      "identifier": "calculate_statistics_helper.py::calculate_mean",
+      "name": "calculate_mean",
+      "language": "python",
+      "path": "calculate_statistics_helper.py",
+      "start_line": 11,
+      "end_line": 26,
+      "loc": 16,
+      "score": {
+        "ai_probability": 0.4323,
+        "human_probability": 0.5677,
+        "confidence": 0.1312,
+        "evidence_score": 0.2663,
+        "risk_score": 0.0567,
+        "classification": "uncertain",
+        "reasons": [
+          "[descriptive_naming, leans human] Avg identifier 1.0 words / 5 chars.",
+          "[generic_comments, leans AI] 2 LLM-typical comment phrase(s) over 3 comment line(s).",
+          "[code_entropy, leans human] Normalized token entropy 0.93 (lower is more predictable).",
+          "[vocabulary_richness, leans human] Identifier type-token ratio 0.58 (lower is more repetitive).",
+          "[repetitive_patterns, leans human] 4-gram repetition 0%; compressibility 53%.",
+          "[formatting_regularity, leans human] Line-length stdev 21; 0% of lines near a round width (note: also explained by auto-formatters)."
+        ]
+      },
+      "signals": [
+        {
+          "name": "repetitive_patterns",
+          "detector": "structure",
+          "score": 0.41911558109833974,
+          "weight": 1.0,
+          "confidence": 0.185,
+          "reason": "4-gram repetition 0%; compressibility 53%.",
+          "evidence": []
+        },
+        {
+          "name": "descriptive_naming",
+          "detector": "stylometry",
+          "score": 0.2975,
+          "weight": 0.9,
+          "confidence": 0.8875,
+          "reason": "Avg identifier 1.0 words / 5 chars.",
+          "evidence": []
+        },
+        {
+          "name": "naming_consistency",
+          "detector": "stylometry",
+          "score": 0.49272727272727274,
+          "weight": 0.4,
+          "confidence": 0.4141666666666666,
+          "reason": "73% of identifiers share one convention (note: also explained by linters).",
+          "evidence": []
+        },
+        {
+          "name": "formatting_regularity",
+          "detector": "stylometry",
+          "score": 0.42776169759672256,
+          "weight": 0.4,
+          "confidence": 0.12249999999999998,
+          "reason": "Line-length stdev 21; 0% of lines near a round width (note: also explained by auto-formatters).",
+          "evidence": []
+        },
+        {
+          "name": "vocabulary_richness",
+          "detector": "stylometry",
+          "score": 0.32253521126760565,
+          "weight": 0.4,
+          "confidence": 0.284,
+          "reason": "Identifier type-token ratio 0.58 (lower is more repetitive).",
+          "evidence": []
+        },
+        {
+          "name": "code_entropy",
+          "detector": "entropy",
+          "score": 0.4103804700597352,
+          "weight": 0.7,
+          "confidence": 0.37,
+          "reason": "Normalized token entropy 0.93 (lower is more predictable).",
+          "evidence": []
+        },
+        {
+          "name": "generic_comments",
+          "detector": "llm_fingerprint",
+          "score": 0.9833333333333333,
+          "weight": 1.3,
+          "confidence": 0.2,
+          "reason": "2 LLM-typical comment phrase(s) over 3 comment line(s).",
+          "evidence": [
+            {
+              "detector": "llm_fingerprint",
+              "signal": "generic_comments",
+              "message": "Comments use 2 phrasing(s) common in LLM output (e.g. 'first, we', 'finally, we').",
+              "severity": 0.9833333333333333,
+              "path": "calculate_statistics_helper.py",
+              "start_line": 11,
+              "end_line": null,
+              "snippet": "First, we check whether the list is empty to avoid division by zero.",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "parent": null
+    }
+  ],
+  "snippets": [],
+  "commit_analysis": {
+    "available": false,
+    "total_commits": 0,
+    "total_authors": 0,
+    "score": {
+      "ai_probability": 0.5,
+      "human_probability": 0.5,
+      "confidence": 0.0,
+      "evidence_score": 0.0,
+      "risk_score": 0.0,
+      "classification": "uncertain",
+      "reasons": []
+    },
+    "signals": [],
+    "timeline": [],
+    "reasons": []
+  },
+  "contributor_analysis": {
+    "available": false,
+    "contributors": [],
+    "reasons": [
+      "No git history available; contributor analysis skipped."
+    ]
+  },
+  "attribution": [
+    {
+      "source": "chatgpt",
+      "probability": 0.11064000000000002,
+      "rationale": "ChatGPT / GPT-family: no distinctive phrasing matched; included for completeness.",
+      "confidence": 0.15
+    },
+    {
+      "source": "claude",
+      "probability": 0.11064000000000002,
+      "rationale": "Claude-family: no distinctive phrasing matched; included for completeness.",
+      "confidence": 0.15
+    },
+    {
+      "source": "gemini",
+      "probability": 0.11064000000000002,
+      "rationale": "Gemini-family: no distinctive phrasing matched; included for completeness.",
+      "confidence": 0.15
+    },
+    {
+      "source": "copilot",
+      "probability": 0.11064000000000002,
+      "rationale": "GitHub Copilot / inline completion: no distinctive phrasing matched; included for completeness.",
+      "confidence": 0.15
+    },
+    {
+      "source": "other_llm",
+      "probability": 0.11064000000000002,
+      "rationale": "Other / unknown LLM: no distinctive phrasing matched; included for completeness.",
+      "confidence": 0.15
+    }
+  ],
+  "reasons": [
+    "[generic_comments, leans AI] 3 LLM-typical comment phrase(s) over 15 comment line(s).",
+    "[descriptive_naming, leans human] Avg identifier 1.1 words / 6 chars.",
+    "[repetitive_patterns, leans AI] 4-gram repetition 19%; compressibility 34%.",
+    "[code_entropy, leans human] Normalized token entropy 0.88 (lower is more predictable).",
+    "[formatting_regularity, leans human] Line-length stdev 22; 0% of lines near a round width (note: also explained by auto-formatters).",
+    "[naming_consistency, leans human] 64% of identifiers share one convention (note: also explained by linters).",
+    "[vocabulary_richness, leans AI] Identifier type-token ratio 0.38 (lower is more repetitive).",
+    "[repeated_boilerplate, leans human] Cross-file duplicated-line ratio 9%."
+  ],
+  "evidence": [
+    {
+      "detector": "llm_fingerprint",
+      "signal": "generic_comments",
+      "message": "Comments use 3 phrasing(s) common in LLM output (e.g. 'first, we', 'next, we', 'finally, we').",
+      "severity": 0.775,
+      "path": "calculate_statistics_helper.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": "First, we check whether the list is empty to avoid division by zero.",
+      "data": {}
+    },
+    {
+      "detector": "structure",
+      "signal": "repetitive_patterns",
+      "message": "Repetitive token structure (4-gram repetition 19%, compresses to 34% of size).",
+      "severity": 0.5925010866966595,
+      "path": "calculate_statistics_helper.py",
+      "start_line": null,
+      "end_line": null,
+      "snippet": null,
+      "data": {}
+    }
+  ],
+  "visualizations": {
+    "folder_heatmap": [
+      {
+        "path": ".",
+        "ai_probability": 0.5672,
+        "confidence": 0.2562,
+        "classification": "possibly_ai_assisted",
+        "files": 1
+      }
+    ],
+    "file_heatmap": [
+      {
+        "path": "calculate_statistics_helper.py",
+        "ai_probability": 0.5538,
+        "confidence": 0.4355,
+        "classification": "possibly_ai_assisted",
+        "loc": 77,
+        "language": "python"
+      }
+    ],
+    "classification_pie": [
+      {
+        "label": "possibly_ai_assisted",
+        "value": 1
+      }
+    ],
+    "commit_timeline": [],
+    "contributor_activity": [],
+    "signal_breakdown": [
+      {
+        "signal": "generic_comments",
+        "mean_score": 0.775,
+        "count": 1,
+        "mean_confidence": 1.0
+      },
+      {
+        "signal": "descriptive_naming",
+        "mean_score": 0.2975,
+        "count": 1,
+        "mean_confidence": 1.0
+      },
+      {
+        "signal": "repetitive_patterns",
+        "mean_score": 0.5925,
+        "count": 1,
+        "mean_confidence": 0.8217
+      },
+      {
+        "signal": "code_entropy",
+        "mean_score": 0.4419,
+        "count": 1,
+        "mean_confidence": 1.0
+      },
+      {
+        "signal": "formatting_regularity",
+        "mean_score": 0.4426,
+        "count": 1,
+        "mean_confidence": 0.525
+      },
+      {
+        "signal": "naming_consistency",
+        "mean_score": 0.47,
+        "count": 1,
+        "mean_confidence": 0.7
+      },
+      {
+        "signal": "repeated_boilerplate",
+        "mean_score": 0.48,
+        "count": 1,
+        "mean_confidence": 0.0425
+      },
+      {
+        "signal": "vocabulary_richness",
+        "mean_score": 0.5156,
+        "count": 1,
+        "mean_confidence": 0.8
+      }
+    ],
+    "similarity_matrix": {},
+    "dependency_graph": {
+      "nodes": [
+        {
+          "id": "calculate_statistics_helper.py",
+          "language": "python",
+          "loc": 77
+        }
+      ],
+      "edges": []
+    }
+  },
+  "recommendations": [
+    "Treat every score here as a probabilistic estimate, never as proof of AI authorship.",
+    "No git history was available. Commit-pattern signals were skipped; providing the full repository (not just a snapshot) improves accuracy."
+  ],
+  "warnings": [],
+  "elapsed_seconds": 0.005,
+  "engine_version": "0.1.0",
+  "disclaimer": "These results are probabilistic estimates, not proof. AI-authorship detection is inherently uncertain and produces both false positives and false negatives. Do not use these scores as the sole basis for any consequential decision about a person or project.",
+  "generated_at": "2026-06-23T10:48:13.489105Z"
+}

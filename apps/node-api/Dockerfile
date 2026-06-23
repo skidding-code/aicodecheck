@@ -6,9 +6,13 @@
 FROM node:22-bookworm-slim AS build
 WORKDIR /repo
 
+# Deterministic, network-light installs (avoids npm's audit/fund exit-handler
+# crashes seen in some container builds).
+ENV npm_config_audit=false npm_config_fund=false npm_config_progress=false
+
 # Build the shared engine first (better layer caching).
 COPY packages/detector-core-ts/package*.json packages/detector-core-ts/
-RUN cd packages/detector-core-ts && npm install
+RUN cd packages/detector-core-ts && npm ci
 COPY packages/detector-core-ts packages/detector-core-ts
 RUN cd packages/detector-core-ts && npm run build
 
