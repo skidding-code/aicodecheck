@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  python-engine:
+    name: Python engine + API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "packages/detector-core[all,dev]" -e "apps/python-api[dev,queue]"
+      - name: Lint
+        run: ruff check packages/detector-core apps/python-api scripts/parity_check.py
+      - name: Test detector-core
+        run: cd packages/detector-core && pytest
+      - name: Test python-api
+        run: cd apps/python-api && pytest
+
+  ts-engine:
+    name: TypeScript engine
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Build + typecheck + test
+        run: |
+          cd packages/detector-core-ts
+          npm ci
+          npm run typecheck
+          npm test
+          npm run build
+
+  node-api:
+    name: Node API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Build engine, then test API
+        run: |
+          ( cd packages/detector-core-ts && npm ci && npm run build )
+          cd apps/node-api
+          npm install
+          npm run typecheck
+          npm test
+          npm run build
+
+  frontends:
+    name: Frontend builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Build engine
+        run: ( cd packages/detector-core-ts && npm ci && npm run build )
+      - name: Build python-api frontend
+        run: ( cd apps/python-api/frontend && npm install && npm run build )
+      - name: Build node-api frontend
+        run: ( cd apps/node-api/frontend && npm install && npm run build )
+      - name: Build web-standalone
+        run: ( cd apps/web-standalone && npm install && npm run build )
+
+  cross-engine-parity:
+    name: Cross-engine parity + benchmark
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install + build both engines
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "packages/detector-core[all,dev]"
+          ( cd packages/detector-core-ts && npm ci && npm run build )
+      - name: Parity check (Python vs TS)
+        run: python scripts/parity_check.py
+      - name: Benchmark (directional check must pass)
+        run: python scripts/benchmark.py

@@ -80,6 +80,17 @@ def test_load_files():
     assert "python" in langs and "javascript" in langs
 
 
+def test_include_hidden_false_skips_hidden_files(tmp_path):
+    from aiprojectdetector.ingestion.loader import IngestOptions
+
+    (tmp_path / "visible.py").write_text("x = 1\n")
+    (tmp_path / ".secret.py").write_text("token = 2\n")
+    scan = load_folder(str(tmp_path), IngestOptions(include_hidden=False, analyze_git=False))
+    paths = {f.rel_path for f in scan.files}
+    assert "visible.py" in paths
+    assert ".secret.py" not in paths
+
+
 def test_load_folder(tmp_path):
     (tmp_path / "src").mkdir()
     (tmp_path / "src" / "main.py").write_text("def main():\n    return 0\n")

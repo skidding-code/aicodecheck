@@ -73,9 +73,9 @@ def walk_directory(
         dirnames[:] = sorted(kept)
 
         for fname in sorted(filenames):
-            if not include_hidden and fname.startswith(".") and not fname.startswith(".github"):
-                # Still allow well-known hidden config files even when hidden are off? No.
-                pass
+            if not include_hidden and fname.startswith("."):
+                skipped += 1
+                continue
             rel = f"{rel_dir}/{fname}" if rel_dir else fname
             if ignore.is_ignored_file(rel):
                 skipped += 1
