@@ -102,6 +102,11 @@ export class Engine {
     const attribution = estimateAttribution(scan, overall.ai_probability);
 
     const signalMeans = this.signalMeans(fileSignalMap, repoSignals);
+    // For multi-file inputs, summarize the actual detector signals driving the
+    // verdict instead of the opaque per-file aggregate reasons.
+    if (fileEntities.length > 3) {
+      overall.reasons = this.summaryReasons(signalMeans, repoSignals);
+    }
     const evidence = this.collectEvidence(fileSignalMap, repoSignals);
     const viz = buildVisualizations(scan, fileEntities, folders, overall, signalMeans);
     const recommendations = buildRecommendations(overall, scan, fileEntities);
@@ -328,6 +333,35 @@ export class Engine {
         ? [`${scan.contributors.length} contributor(s) detected.`]
         : ["No git history available; contributor analysis skipped."],
     });
+  }
+
+  private summaryReasons(
+    signalMeans: Record<string, SignalMeanStats>,
+    repoSignals: Signal[],
+    limit = 8,
+  ): string[] {
+    const repoReason = new Map<string, string>();
+    for (const s of repoSignals) if (s.reason) repoReason.set(s.name, s.reason);
+    const ranked = Object.entries(signalMeans).sort(
+      (a, b) =>
+        Math.abs(b[1].mean_score - 0.5) * (1 + Math.min(b[1].count, 50) / 10) -
+        Math.abs(a[1].mean_score - 0.5) * (1 + Math.min(a[1].count, 50) / 10),
+    );
+    const reasons: string[] = [];
+    for (const [name, stats] of ranked) {
+      const dev = stats.mean_score - 0.5;
+      if (Math.abs(dev) < 0.02) continue;
+      const lean = dev > 0 ? "leans AI" : "leans human";
+      const detail = repoReason.get(name);
+      if (detail) {
+        reasons.push(`[${name}, ${lean}] ${detail}`);
+      } else {
+        const where = stats.count > 1 ? `across ${stats.count} place(s)` : "in 1 place";
+        reasons.push(`[${name}, ${lean}] mean score ${stats.mean_score.toFixed(2)} ${where}.`);
+      }
+      if (reasons.length >= limit) break;
+    }
+    return reasons.length ? reasons : ["Not enough signal to form a confident estimate."];
   }
 
   private signalMeans(
