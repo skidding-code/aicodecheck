@@ -1,0 +1,51 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+dist/
+build/
+
+# ---- Node ----
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.tsbuildinfo
+.vite/
+coverage/
+
+# ---- Frontend build output ----
+apps/*/frontend/dist/
+apps/*/frontend/build/
+apps/web-standalone/dist/
+
+# ---- Data / caches (NOT committed; built on demand) ----
+datasets/calibration/_fetched/
+datasets/calibration/_expanded/
+.cache/
+*.sqlite
+*.db
+data/
+
+# ---- Secrets / env ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
