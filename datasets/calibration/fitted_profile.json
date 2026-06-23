@@ -1,0 +1,20 @@
+{
+  "fitted_on": "mean-separation",
+  "gain": 1.25,
+  "min_confidence": 0.25,
+  "samples": 46,
+  "t_assisted_high": 0.62,
+  "t_assisted_low": 0.52,
+  "t_generated": 0.72,
+  "t_human": 0.42,
+  "weight_overrides": {
+    "code_entropy": 0.656,
+    "descriptive_naming": 0.517,
+    "excessive_documentation": 0.783,
+    "formatting_regularity": 0.533,
+    "generic_comments": 0.862,
+    "naming_consistency": 0.535,
+    "repetitive_patterns": 0.677,
+    "vocabulary_richness": 0.9
+  }
+}

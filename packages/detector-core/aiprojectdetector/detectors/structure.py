@@ -120,9 +120,11 @@ class StructureDetector(Detector):
         # 3) Cross-file boilerplate / duplicated lines.
         dup = self._duplicate_line_ratio(file_units)
         if dup is not None:
-            score = clamp(0.45 + 0.5 * clamp(dup / 0.3))
+            # Require duplication well above the natural baseline before leaning
+            # AI; human test suites and configs legitimately repeat lines.
+            score = clamp(0.48 + 0.42 * clamp((dup - 0.12) / 0.33))
             ev = []
-            if dup > 0.15:
+            if dup > 0.22:
                 ev.append(
                     self.evidence(
                         "repeated_boilerplate",
@@ -135,8 +137,8 @@ class StructureDetector(Detector):
                 self.signal(
                     "repeated_boilerplate",
                     score,
-                    confidence=clamp(len(file_units) / 20),
-                    weight=1.0,
+                    confidence=clamp(len(file_units) / 20) * 0.85,
+                    weight=0.8,
                     reason=f"Cross-file duplicated-line ratio {dup:.0%}.",
                     evidence=ev,
                 )

@@ -67,6 +67,14 @@ DEFAULT_LOCKFILES: frozenset[str] = frozenset(
         "Gemfile.lock",
         "go.sum",
         "flake.lock",
+        "uv.lock",
+        "pdm.lock",
+        "bun.lock",
+        "bun.lockb",
+        "packages.lock.json",
+        "gradle.lockfile",
+        "mix.lock",
+        "pubspec.lock",
     }
 )
 
@@ -223,27 +231,27 @@ LLM_COMMENT_PHRASES: tuple[str, ...] = (
     "out of the box",
 )
 
-# Placeholder / stub markers.
+# Placeholder / stub markers. Deliberately narrow: only phrasings that are
+# strongly characteristic of generated stubs or truncated LLM output. We avoid
+# human tells like "fixme" or ubiquitous prose like "etc." which would create
+# false positives in ordinary codebases.
 PLACEHOLDER_MARKERS: tuple[str, ...] = (
     "your code here",
     "your implementation here",
-    "implement this",
+    "implement this method",
     "implementation goes here",
     "add your logic here",
+    "add your code here",
     "todo: implement",
-    "todo implement",
-    "fixme",
-    "placeholder",
     "replace with your",
-    "replace this with",
+    "replace this with your",
     "rest of the code",
     "rest of your code",
+    "rest of the implementation",
     "... (truncated)",
-    "and so on",
-    "etc.",
-    "raise notimplementederror",
-    "throw new error(\"not implemented",
-    "pass  # todo",
+    "# ... (rest",
+    "// ... (rest",
+    "the rest of your",
 )
 
 # README / documentation phrasings characteristic of generated prose.

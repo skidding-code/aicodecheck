@@ -44,7 +44,8 @@ class StylometryDetector(Detector):
             avg_len = mean(char_lens)
             # 2.2 words / 13 chars average is high for hand-written code.
             descriptiveness = clamp((avg_words - 1.3) / 1.4) * 0.6 + clamp((avg_len - 6) / 10) * 0.4
-            score = clamp(0.45 + 0.4 * descriptiveness)
+            # Two-sided: terse naming leans human, very descriptive leans AI.
+            score = clamp(0.5 + 0.45 * (descriptiveness - 0.45))
             ev = []
             if descriptiveness > 0.6:
                 longest = sorted(set(idents), key=len, reverse=True)[:5]
@@ -95,13 +96,15 @@ class StylometryDetector(Detector):
         toks = identifiers(unit.source)
         if len(toks) >= 40:
             ttr = type_token_ratio(toks)
-            score = clamp(0.5 + 0.3 * clamp((0.45 - ttr) / 0.35))
+            # Two-sided around a center; note large files naturally have lower
+            # TTR, so we keep the weight modest to avoid penalizing size.
+            score = clamp(0.5 + 0.3 * ((0.40 - ttr) / 0.30))
             signals.append(
                 self.signal(
                     "vocabulary_richness",
                     score,
-                    confidence=clamp(len(toks) / 200),
-                    weight=0.5,
+                    confidence=clamp(len(toks) / 200) * 0.8,
+                    weight=0.4,
                     reason=f"Identifier type-token ratio {ttr:.2f} (lower is more repetitive).",
                 )
             )
@@ -121,7 +124,9 @@ class StylometryDetector(Detector):
         near_round = sum(
             1 for ln_len in lengths if any(abs(ln_len - w) <= 1 for w in _ROUND_WIDTHS)
         ) / len(lengths)
-        score = clamp(0.46 + 0.25 * regularity + 0.2 * clamp(near_round / 0.15))
+        # Two-sided: irregular line lengths lean human; very regular + many
+        # lines hugging a round max-width lean (weakly) AI.
+        score = clamp(0.5 + 0.22 * (regularity - 0.5) + 0.18 * clamp(near_round / 0.15 - 0.3))
         return [
             self.signal(
                 "formatting_regularity",

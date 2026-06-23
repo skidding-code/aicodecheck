@@ -38,8 +38,9 @@ class EntropyDetector(Detector):
         if len(tokens) < 40:
             return []
         ent = normalized_entropy(tokens)
-        # Empirically, human source clusters higher; map low entropy -> AI lean.
-        score = clamp(0.5 + 0.3 * clamp((0.82 - ent) / 0.25))
+        # Two-sided around a human-typical center: low entropy leans AI, high
+        # entropy leans human. One-sided mappings would bias every file upward.
+        score = clamp(0.5 + 0.6 * (0.78 - ent))
         return [
             self.signal(
                 "code_entropy",

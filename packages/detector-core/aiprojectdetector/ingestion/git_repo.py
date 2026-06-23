@@ -86,7 +86,10 @@ _FLD = "\x1f"
 
 
 def _read_commits(root: str, max_commits: int) -> list[CommitInfo]:
-    fmt = _FLD.join(["%H", "%an", "%ae", "%aI", "%s"]) + _REC
+    # The record separator must PRECEDE each commit so that, after splitting on
+    # it, every block is "<header>\n<numstat...>" rather than the trailing
+    # numstat of the previous commit. (Putting it at the end misaligns blocks.)
+    fmt = _REC + _FLD.join(["%H", "%an", "%ae", "%aI", "%s"])
     try:
         log = _run(
             ["log", f"--max-count={max_commits}", "--no-merges", f"--pretty=format:{fmt}", "--numstat"],
