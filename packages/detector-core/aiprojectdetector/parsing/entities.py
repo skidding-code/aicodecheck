@@ -36,7 +36,9 @@ def extract_entities(source: str, language: str) -> list[CodeEntity]:
     if language == "python":
         try:
             return _extract_python(source)
-        except SyntaxError:
+        except (SyntaxError, ValueError, RecursionError, MemoryError):
+            # ValueError: null bytes; RecursionError: pathologically deep ASTs;
+            # all recoverable via the iterative generic extractor.
             return _extract_generic(source, language)
     if language in {
         "javascript", "typescript", "java", "kotlin", "go", "rust", "c", "cpp",

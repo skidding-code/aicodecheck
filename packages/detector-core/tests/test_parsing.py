@@ -30,6 +30,14 @@ def test_extract_python_handles_syntax_error():
     assert isinstance(ents, list)
 
 
+def test_extract_python_handles_deep_expression():
+    # Pathologically deep expressions make ast.parse raise RecursionError
+    # (not SyntaxError); we must fall back instead of crashing.
+    src = "x = " + "1+" * 60000 + "1\n"
+    ents = extract_entities(src, "python")
+    assert isinstance(ents, list)
+
+
 def test_extract_generic_js():
     src = "export function doThing(a, b) {\n  return a + b;\n}\n"
     ents = extract_entities(src, "javascript")
