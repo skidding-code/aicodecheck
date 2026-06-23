@@ -29,8 +29,9 @@ export class EntropyDetector extends Detector {
     const tokens = tokenize(unit.source);
     if (tokens.length < 40) return [];
     const ent = normalizedEntropy(tokens);
-    // Empirically, human source clusters higher; map low entropy -> AI lean.
-    const score = clamp(0.5 + 0.3 * clamp((0.82 - ent) / 0.25));
+    // Two-sided around a human-typical center (matches the Python engine): low
+    // entropy leans AI, high entropy leans human.
+    const score = clamp(0.5 + 0.6 * (0.78 - ent));
     return [
       this.signal("code_entropy", score, {
         confidence: clamp(tokens.length / 300),

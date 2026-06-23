@@ -113,9 +113,11 @@ export class StructureDetector extends Detector {
     // 3) Cross-file boilerplate / duplicated lines.
     const dup = this.duplicateLineRatio(fileUnits);
     if (dup !== null) {
-      const score = clamp(0.45 + 0.5 * clamp(dup / 0.3));
+      // Require duplication well above the natural baseline before leaning AI;
+      // human test suites and configs legitimately repeat lines.
+      const score = clamp(0.48 + 0.42 * clamp((dup - 0.12) / 0.33));
       const ev = [];
-      if (dup > 0.15) {
+      if (dup > 0.22) {
         ev.push(
           this.evidence(
             "repeated_boilerplate",
@@ -127,8 +129,8 @@ export class StructureDetector extends Detector {
       }
       signals.push(
         this.signal("repeated_boilerplate", score, {
-          confidence: clamp(fileUnits.length / 20),
-          weight: 1.0,
+          confidence: clamp(fileUnits.length / 20) * 0.85,
+          weight: 0.8,
           reason: `Cross-file duplicated-line ratio ${percent0(dup)}.`,
           evidence: ev,
         }),

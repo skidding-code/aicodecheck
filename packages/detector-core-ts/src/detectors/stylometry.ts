@@ -39,7 +39,8 @@ export class StylometryDetector extends Detector {
       const avgLen = mean(charLens);
       const descriptiveness =
         clamp((avgWords - 1.3) / 1.4) * 0.6 + clamp((avgLen - 6) / 10) * 0.4;
-      const score = clamp(0.45 + 0.4 * descriptiveness);
+      // Two-sided: terse naming leans human, very descriptive leans AI.
+      const score = clamp(0.5 + 0.45 * (descriptiveness - 0.45));
       const ev = [];
       if (descriptiveness > 0.6) {
         const longest = Array.from(new Set(idents))
@@ -97,11 +98,13 @@ export class StylometryDetector extends Detector {
     const toks = identifiers(unit.source);
     if (toks.length >= 40) {
       const ttr = typeTokenRatio(toks);
-      const score = clamp(0.5 + 0.3 * clamp((0.45 - ttr) / 0.35));
+      // Two-sided around a center; modest weight since large files naturally
+      // have lower TTR.
+      const score = clamp(0.5 + 0.3 * ((0.4 - ttr) / 0.3));
       signals.push(
         this.signal("vocabulary_richness", score, {
-          confidence: clamp(toks.length / 200),
-          weight: 0.5,
+          confidence: clamp(toks.length / 200) * 0.8,
+          weight: 0.4,
           reason: `Identifier type-token ratio ${fixed(ttr, 2)} (lower is more repetitive).`,
         }),
       );
@@ -119,7 +122,9 @@ export class StylometryDetector extends Detector {
     const regularity = clamp(1 - sd / (m + 1e-9) / 0.7);
     const nearRound =
       lengths.filter((l) => ROUND_WIDTHS.some((w) => Math.abs(l - w) <= 1)).length / lengths.length;
-    const score = clamp(0.46 + 0.25 * regularity + 0.2 * clamp(nearRound / 0.15));
+    // Two-sided: irregular line lengths lean human; very regular + many lines
+    // hugging a round max-width lean (weakly) AI.
+    const score = clamp(0.5 + 0.22 * (regularity - 0.5) + 0.18 * clamp(nearRound / 0.15 - 0.3));
     return [
       this.signal("formatting_regularity", score, {
         confidence: clamp(lines.length / 80) * 0.7,

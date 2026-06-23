@@ -199,26 +199,26 @@ export const LLM_COMMENT_PHRASES: readonly string[] = [
   "out of the box",
 ];
 
+// Narrow on purpose: only phrasings strongly characteristic of generated stubs
+// or truncated LLM output. Avoids human tells (fixme) and ubiquitous prose
+// (etc.) that would create false positives. Mirrors the Python engine.
 export const PLACEHOLDER_MARKERS: readonly string[] = [
   "your code here",
   "your implementation here",
-  "implement this",
+  "implement this method",
   "implementation goes here",
   "add your logic here",
+  "add your code here",
   "todo: implement",
-  "todo implement",
-  "fixme",
-  "placeholder",
   "replace with your",
-  "replace this with",
+  "replace this with your",
   "rest of the code",
   "rest of your code",
+  "rest of the implementation",
   "... (truncated)",
-  "and so on",
-  "etc.",
-  "raise notimplementederror",
-  'throw new error("not implemented',
-  "pass  # todo",
+  "# ... (rest",
+  "// ... (rest",
+  "the rest of your",
 ];
 
 export const LLM_DOC_PHRASES: readonly string[] = [
