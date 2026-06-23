@@ -1,0 +1,76 @@
+# AI Project Detector — full stack.
+#   docker compose up --build
+#
+# Services are added incrementally; the Python stack (db, redis, api, worker)
+# is the reference deployment. Front-end and Node services are wired in as their
+# images are built.
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: aipd
+      POSTGRES_PASSWORD: aipd
+      POSTGRES_DB: aipd
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aipd"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    ports:
+      - "6379:6379"
+
+  python-api:
+    build:
+      context: .
+      dockerfile: apps/python-api/Dockerfile
+    environment:
+      AIPD_DATABASE_URL: postgresql+psycopg://aipd:aipd@db:5432/aipd
+      AIPD_REDIS_URL: redis://redis:6379/0
+      AIPD_CORS_ORIGINS: '["http://localhost:5173","http://localhost:4173","http://localhost:8080"]'
+      AIPD_TOKEN_ENCRYPTION_KEY: ${AIPD_TOKEN_ENCRYPTION_KEY:-}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  python-worker:
+    build:
+      context: .
+      dockerfile: apps/python-api/Dockerfile
+    command: ["python", "-m", "app.worker"]
+    environment:
+      AIPD_DATABASE_URL: postgresql+psycopg://aipd:aipd@db:5432/aipd
+      AIPD_REDIS_URL: redis://redis:6379/0
+      AIPD_TOKEN_ENCRYPTION_KEY: ${AIPD_TOKEN_ENCRYPTION_KEY:-}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  python-frontend:
+    build:
+      context: apps/python-api/frontend
+    depends_on:
+      - python-api
+    ports:
+      - "5173:80"
+
+volumes:
+  pgdata:
