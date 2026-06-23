@@ -44,3 +44,37 @@
 {"path": "seed/ai/temperature_converter.ts", "label": "ai", "language": "typescript", "source": "synthetic/authored-in-llm-style", "notes": "Synthetic source authored in characteristic LLM style (verbose names, tutorial comments, uniform docstrings, placeholder TODO). Label is an approximate stylistic proxy, not ground truth."}
 {"path": "seed/ai/todo_list_service.ts", "label": "ai", "language": "typescript", "source": "synthetic/authored-in-llm-style", "notes": "Synthetic source authored in characteristic LLM style (verbose names, tutorial comments, uniform docstrings, placeholder TODO). Label is an approximate stylistic proxy, not ground truth."}
 {"path": "seed/ai/user_authentication_manager.py", "label": "ai", "language": "python", "source": "synthetic/authored-in-llm-style", "notes": "Synthetic source authored in characteristic LLM style (verbose names, tutorial comments, uniform docstrings, placeholder TODO). Label is an approximate stylistic proxy, not ground truth."}
+{"path": "seed/ai_natural/calendar.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/cmd.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/colorsys.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/fnmatch.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/getopt.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/queue.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/secrets.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/shlex.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/string.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/ai_natural/textwrap.py", "label": "ai", "language": "python", "source": "agent-generated (independent reimplementation of stdlib functionality)", "notes": "natural-style AI; no tutorial tells"}
+{"path": "seed/human_modern/click____init__.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click___compat.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click___termui_impl.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click___textwrap.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click___utils.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click___winconsole.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click__core.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click__decorators.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click__exceptions.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click__formatting.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click__globals.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/click__parser.py", "label": "human", "language": "python", "source": "pallets/click@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask____init__.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask____main__.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__app.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__blueprints.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__cli.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__config.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__ctx.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__debughelpers.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__globals.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__helpers.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__logging.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}
+{"path": "seed/human_modern/flask__sessions.py", "label": "human", "language": "python", "source": "pallets/flask@BSD-3", "notes": "modern human, permissively licensed"}

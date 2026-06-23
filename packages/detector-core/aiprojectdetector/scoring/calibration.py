@@ -45,6 +45,20 @@ class CalibrationProfile:
 
 DEFAULT_PROFILE = CalibrationProfile()
 
+# A higher-recall operating point: lower thresholds + more gain so borderline,
+# lightly-tell'd AI is flagged sooner. This DELIBERATELY trades precision for
+# recall — it will flag more clean human code. Use when missing AI is costlier
+# than a false accusation (and never as sole evidence). See docs/limitations.md.
+HIGH_RECALL_PROFILE = CalibrationProfile(
+    t_human=0.40,
+    t_assisted_low=0.48,
+    t_assisted_high=0.57,
+    t_generated=0.66,
+    min_confidence=0.20,
+    gain=1.6,
+    fitted_on="high_recall_defaults",
+)
+
 
 def fit_profile(
     samples: list[tuple[dict[str, float], int]],

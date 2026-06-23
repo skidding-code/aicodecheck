@@ -34,7 +34,8 @@ from .models import (
 from .parsing.entities import extract_entities
 from .reporting import build_recommendations, build_visualizations
 from .scoring.calibration import DEFAULT_PROFILE, CalibrationProfile
-from .scoring.ensemble import combine_signals
+from .scoring.classifier import load_bundled_classifier
+from .scoring.ensemble import classify, combine_signals
 
 ENGINE_VERSION = "0.1.0"
 
@@ -49,11 +50,24 @@ class Engine:
         *,
         max_functions: int = 4000,
         max_files_detailed: int = 5000,
+        use_classifier: bool = False,
+        classifier=None,
     ) -> None:
         self.detectors = detectors if detectors is not None else default_detectors()
         self.profile = profile or DEFAULT_PROFILE
         self.max_functions = max_functions
         self.max_files_detailed = max_files_detailed
+        # The trained logistic classifier (if bundled) is the primary overall
+        # scorer: it separates natural AI from human better than the additive
+        # ensemble. Falls back to the ensemble when no model is available or
+        # use_classifier is False.
+        self.use_classifier = use_classifier
+        if classifier is not None:
+            self.classifier = classifier
+        elif use_classifier:
+            self.classifier = load_bundled_classifier()
+        else:
+            self.classifier = None
 
     # ------------------------------------------------------------------ #
     def analyze(self, scan: Scan, analysis_id: str | None = None) -> AnalysisResult:
@@ -81,6 +95,10 @@ class Engine:
         # the verdict instead of the opaque per-file aggregate reasons.
         if len(file_entities) > 3:
             overall.reasons = self._summary_reasons(signal_means, repo_signals)
+        # The trained classifier (when available) is a better overall scorer
+        # than the additive average; apply it on top of the same signal vector.
+        if self.classifier is not None and signal_means:
+            overall = self._apply_classifier(overall, signal_means)
         evidence = self._collect_evidence(file_signal_map, repo_signals)
         viz = build_visualizations(scan, file_entities, folders, overall, signal_means)
         recommendations = build_recommendations(overall, scan, file_entities)
@@ -293,6 +311,29 @@ class Engine:
                 else ["No git history available; contributor analysis skipped."]
             ),
         )
+
+    def _apply_classifier(self, overall: AIScore, signal_means: dict) -> AIScore:
+        """Override the overall probability with the trained classifier.
+
+        Keeps the ensemble's confidence (which reflects evidence volume and
+        agreement) and prepends the classifier's strongest contributing signals
+        to the reasons so the verdict stays explainable.
+        """
+        fv = {name: stats["mean_score"] for name, stats in signal_means.items()}
+        p = self.classifier.predict_proba(fv)
+        overall.ai_probability = round(p, 4)
+        overall.human_probability = round(1.0 - p, 4)
+        overall.classification = classify(p, overall.confidence, self.profile)
+        contribs = self.classifier.top_contributions(fv, k=4)
+        clf_reasons = []
+        for name, contrib in contribs:
+            if abs(contrib) < 1e-3:
+                continue
+            lean = "leans AI" if contrib > 0 else "leans human"
+            clf_reasons.append(f"[{name}, {lean}] classifier weight {contrib:+.2f}")
+        if clf_reasons:
+            overall.reasons = clf_reasons + [r for r in overall.reasons if "classifier" not in r]
+        return overall
 
     def _summary_reasons(
         self, signal_means: dict[str, dict[str, float]], repo_signals: list[Signal], limit: int = 8

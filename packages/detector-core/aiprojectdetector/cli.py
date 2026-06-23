@@ -38,6 +38,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--include-lockfiles", action="store_true")
     parser.add_argument("--no-git", action="store_true", help="skip git-history analysis")
     parser.add_argument("--ignore", action="append", default=[], help="extra ignore glob (repeatable)")
+    parser.add_argument(
+        "--classifier",
+        action="store_true",
+        help="use the trained statistical classifier as the overall scorer",
+    )
+    parser.add_argument(
+        "--high-recall",
+        action="store_true",
+        help="lower thresholds to catch borderline AI (raises false positives)",
+    )
     args = parser.parse_args(argv)
 
     opts = IngestOptions(
@@ -61,7 +71,13 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 
-    result = Engine().analyze(scan)
+    from .scoring.calibration import HIGH_RECALL_PROFILE
+
+    engine = Engine(
+        profile=HIGH_RECALL_PROFILE if args.high_recall else None,
+        use_classifier=args.classifier,
+    )
+    result = engine.analyze(scan)
 
     print(f"\n  Target: {result.target.name}  ({result.target.kind})")
     print(f"  Files analyzed: {result.target.analyzed_files} | LOC: {result.target.total_loc}")

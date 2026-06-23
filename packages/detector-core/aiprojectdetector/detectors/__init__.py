@@ -7,6 +7,7 @@ engine. ``default_detectors()`` returns the built-in set.
 
 from __future__ import annotations
 
+from .authorship import AuthorshipArtifactsDetector
 from .base import AnalysisUnit, Detector, file_to_unit
 from .commit_history import CommitHistoryDetector
 from .documentation import DocumentationDetector
@@ -37,6 +38,7 @@ for _cls in (
     DocumentationDetector,
     CommitHistoryDetector,
     RepoBehaviorDetector,
+    AuthorshipArtifactsDetector,
 ):
     register(_cls)
 
@@ -60,4 +62,5 @@ __all__ = [
     "DocumentationDetector",
     "CommitHistoryDetector",
     "RepoBehaviorDetector",
+    "AuthorshipArtifactsDetector",
 ]

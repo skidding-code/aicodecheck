@@ -19,6 +19,7 @@ import { StylometryDetector } from "./stylometry.js";
 import { EntropyDetector } from "./entropy.js";
 import { LLMFingerprintDetector } from "./llmFingerprint.js";
 import { DocumentationDetector } from "./documentation.js";
+import { AuthorshipArtifactsDetector } from "./authorship.js";
 
 /** Interface-preserving stub: git history is unavailable in the browser. */
 export class CommitHistoryDetector extends Detector {
@@ -60,6 +61,7 @@ for (const cls of [
   DocumentationDetector,
   CommitHistoryDetector,
   RepoBehaviorDetector,
+  AuthorshipArtifactsDetector,
 ]) {
   register(cls);
 }
@@ -76,6 +78,7 @@ export {
   EntropyDetector,
   LLMFingerprintDetector,
   DocumentationDetector,
+  AuthorshipArtifactsDetector,
 };
 export { fileToUnit, makeUnit, unitLoc } from "./base.js";
 export type { AnalysisUnit } from "./base.js";

@@ -119,3 +119,28 @@ python scripts/benchmark.py --fit      # also fit + save fitted_profile.json
 ```
 
 See `scripts/README.md` for full CLI documentation and the latest metrics.
+
+## Extended corpus: natural-AI vs modern-human (added for classifier training)
+
+Two labeled subsets were added to study *natural* (un-stylized) AI code:
+
+- `seed/ai_natural/` — independent agent re-implementations of common stdlib
+  functionality (textwrap, fnmatch, colorsys, shlex, secrets, string, calendar,
+  queue, getopt, cmd), written in a natural style with no tutorial tells. These
+  are AI-generated (label `ai`).
+- `seed/human_modern/` — modern, permissively-licensed human source files from
+  **pallets/flask** and **pallets/click** (both BSD-3-Clause), included with
+  attribution as label `human`.
+
+These power `scripts/train_classifier.py`, which fits the bundled logistic
+classifier (`aiprojectdetector/data/classifier.json`).
+
+**Honest caveat:** the experiment showed natural AI code is *not* reliably
+separable from skilled modern human code by these static signals (see
+`docs/limitations.md`). The classifier improves detection of *stylized* AI; it
+does not, and cannot honestly, reliably catch concise natural AI without a
+false-positive cost.
+
+### Attribution / licensing
+- Flask and Click sources: Copyright Pallets, BSD-3-Clause.
+- stdlib comparison sources (used at experiment time, not committed): PSF License.

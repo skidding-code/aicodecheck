@@ -62,6 +62,43 @@ weaker, and some languages (e.g. Java in our benchmark) separate poorly.
 * The SSRF guard refuses to clone from hosts resolving to private/loopback
   ranges (configurable).
 
+## Empirical finding: natural AI code is (often) indistinguishable
+
+We ran a controlled experiment: take real human modules (CPython stdlib, Flask,
+click) and have independent agents re-implement the *same functionality* in a
+natural, un-styled way, then compare. Results:
+
+* The **only** features that reliably separated the classes were human
+  *maintenance artifacts* (TODO/FIXME/`noqa`, commented-out code) and *comment
+  polish* (humans write terse fragments; AI writes full sentences). These are
+  implemented as the ``authorship_artifacts`` detector.
+* **Stylized** AI (tutorial-style comments, emoji, marketing prose) is caught
+  reliably.
+* **Natural** AI (concise, idiomatic, lightly commented, fully type-hinted) was
+  **not** separable: across 10 independent AI re-implementations the engine's
+  mean AI-probability was ~0.40 — *identical to human code* — with 0/10 crossing
+  0.5. A logistic classifier trained specifically on this boundary still could
+  not lift them, because in the measured feature space natural AI and skilled
+  modern human code genuinely overlap.
+
+Takeaway: this tool detects **stylistic AI fingerprints**, not "AI authorship"
+in the abstract. A capable model writing clean, comment-light code is at or
+beyond the limit of static detection. Pushing thresholds down to catch it
+(`HIGH_RECALL_PROFILE`, or the trained `--classifier` mode) trades precision for
+recall and will flag tidy human code. There is no setting that reliably catches
+concise natural AI *without* a real false-positive cost — and we do not pretend
+otherwise.
+
+## Operating points
+
+* **Default (ensemble):** balanced; hedges to `uncertain` on borderline code and
+  avoids accusing real human projects.
+* **`--classifier`:** a trained logistic model over the signals; better on
+  stylized AI, but still cannot separate natural AI and may label it
+  `likely_human`.
+* **`--high-recall`:** lower thresholds to surface borderline AI sooner; expect
+  more false positives. Never use as sole evidence.
+
 ## Calibration honesty
 
 Benchmark numbers in this repo come from a **small** seed corpus and synthetic
