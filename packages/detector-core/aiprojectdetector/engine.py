@@ -77,6 +77,10 @@ class Engine:
         attribution = estimate_attribution(scan, overall.ai_probability)
 
         signal_means = self._signal_means(file_signal_map, repo_signals)
+        # For multi-file inputs, summarize the actual detector signals driving
+        # the verdict instead of the opaque per-file aggregate reasons.
+        if len(file_entities) > 3:
+            overall.reasons = self._summary_reasons(signal_means, repo_signals)
         evidence = self._collect_evidence(file_signal_map, repo_signals)
         viz = build_visualizations(scan, file_entities, folders, overall, signal_means)
         recommendations = build_recommendations(overall, scan, file_entities)
@@ -289,6 +293,40 @@ class Engine:
                 else ["No git history available; contributor analysis skipped."]
             ),
         )
+
+    def _summary_reasons(
+        self, signal_means: dict[str, dict[str, float]], repo_signals: list[Signal], limit: int = 8
+    ) -> list[str]:
+        """Human-readable summary of the signals that most moved the verdict.
+
+        Ranks aggregated signals by deviation-from-neutral weighted by how often
+        they fired, and reuses a representative detector reason string when one
+        is available (repo-level signals carry the richest text).
+        """
+        repo_reason = {s.name: s.reason for s in repo_signals if s.reason}
+        ranked = sorted(
+            signal_means.items(),
+            key=lambda kv: abs(kv[1]["mean_score"] - 0.5) * (1 + min(kv[1]["count"], 50) / 10),
+            reverse=True,
+        )
+        reasons: list[str] = []
+        for name, stats in ranked:
+            dev = stats["mean_score"] - 0.5
+            if abs(dev) < 0.02:
+                continue
+            lean = "leans AI" if dev > 0 else "leans human"
+            count = int(stats["count"])
+            detail = repo_reason.get(name)
+            where = f"across {count} place(s)" if count > 1 else "in 1 place"
+            if detail:
+                reasons.append(f"[{name}, {lean}] {detail}")
+            else:
+                reasons.append(
+                    f"[{name}, {lean}] mean score {stats['mean_score']:.2f} {where}."
+                )
+            if len(reasons) >= limit:
+                break
+        return reasons or ["Not enough signal to form a confident estimate."]
 
     def _signal_means(self, file_signal_map, repo_signals) -> dict[str, dict[str, float]]:
         buckets: dict[str, list[Signal]] = defaultdict(list)
