@@ -44,11 +44,15 @@ aipd owner/repo            # clone + analyze a GitHub repo
 
 ```bash
 docker compose up --build
-# dashboard:        http://localhost:5173   (python-api frontend)
-# python REST API:  http://localhost:8000/docs
-# node REST API:    http://localhost:8080/docs
-# browser-only app: http://localhost:4173
+# Python dashboard:   http://localhost:5173   (python-api frontend)
+# Python REST API:    http://localhost:8000/docs
+# Node dashboard:     http://localhost:8081   (node-api frontend)
+# Node REST API:      http://localhost:8080/
+# Browser-only app:   http://localhost:4173   (no backend; code stays local)
 ```
+
+Brings up Postgres, Redis, the FastAPI API + worker, and all three front-ends.
+The Node API and the browser-only app are self-contained and need no database.
 
 ## Inputs supported
 
