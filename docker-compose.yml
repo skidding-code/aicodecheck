@@ -72,5 +72,31 @@ services:
     ports:
       - "5173:80"
 
+  # --- Node.js variant (self-contained: sqlite + in-process queue) ---
+  node-api:
+    build:
+      context: .
+      dockerfile: apps/node-api/Dockerfile
+    environment:
+      PORT: "8080"
+    ports:
+      - "8080:8080"
+
+  node-frontend:
+    build:
+      context: apps/node-api/frontend
+    depends_on:
+      - node-api
+    ports:
+      - "8081:80"
+
+  # --- No-backend variant (everything runs in the browser) ---
+  web-standalone:
+    build:
+      context: .
+      dockerfile: apps/web-standalone/Dockerfile
+    ports:
+      - "4173:80"
+
 volumes:
   pgdata:

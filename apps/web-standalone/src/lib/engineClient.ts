@@ -48,7 +48,11 @@ function getWorker(): Worker {
   return worker;
 }
 
-function send(req: Omit<WorkerRequest, "id">): Promise<AnalysisResult> {
+type RequestBody =
+  | Omit<Extract<WorkerRequest, { type: "snippet" }>, "id">
+  | Omit<Extract<WorkerRequest, { type: "files" }>, "id">;
+
+function send(req: RequestBody): Promise<AnalysisResult> {
   const id = nextId++;
   const message = { ...req, id } as WorkerRequest;
   return new Promise<AnalysisResult>((resolve, reject) => {
