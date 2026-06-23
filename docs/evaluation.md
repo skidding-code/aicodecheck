@@ -51,6 +51,49 @@ Classifier threshold sweep (recall on AI vs false-positive rate on humans):
     confidence by the `ai_tool_markers` signal / tool attribution. Most *real*
     AI-assisted repositories carry such markers.
 
+## Follow-up: REAL AI code from GitHub (not agent-generated)
+
+To rule out any artifact of using our own agents, we repeated the test with
+**real AI-generated repositories pulled from GitHub** — projects that advertise
+an AI builder (v0, Bolt, Lovable, Cursor, Claude Code) in their README/topics.
+(GitHub *git cloning* was blocked by the environment's egress policy mid-session;
+we fetched via the permitted `codeload`/`api.github.com` hosts instead. Scripts:
+`scripts/collect_real_ai.py` + tarball fetch.)
+
+* **110 real AI files** from 37 v0/Bolt/Lovable/Cursor repos (mostly React/TSX —
+  the "frontend-design" population — with their original comments).
+* Compared against **110 language-matched human JS/TS files** from established
+  human repos (Express, Lodash, Axios, date-fns, Preact, Redux, Vue, Svelte,
+  Underscore, Moment, got, Chalk).
+
+File-level results (held-out):
+
+| Mode | AI mean | Human mean | ROC AUC |
+|------|--------:|-----------:|--------:|
+| Default ensemble | 0.452 | 0.455 | **0.505 (chance)** |
+| Classifier | 0.383 | 0.382 | 0.534 |
+
+Repo-level (15 real AI repos vs 14 human repos, full folders incl. READMEs):
+
+* AI mean **0.480** vs human mean **0.471** — separation **+0.009**.
+* AI flagged ≥0.55: **1/15**. Human flagged ≥0.55: **2/14** (d3, underscore).
+  i.e. clean human repos false-positive *more often* than real AI repos are
+  caught.
+
+Why even repo context didn't help here: these repos were identified by README
+*mentions* of v0/Bolt, not by the hard tool-marker files (`.cursorrules`,
+`.github/copilot-instructions.md`) the `ai_tool_markers` signal keys on, and the
+tarballs carry no git history (so commit-trailer signatures can't fire). v0/Bolt
+React output is also stylistically close to the large population of humans using
+the same shadcn/ui + Tailwind stack — a framework fingerprint, not an authorship
+one.
+
+**This confirms, on real-world AI code, the same conclusion as the synthetic
+test: clean AI-generated code is not reliably distinguishable from human code by
+static analysis.** The tool remains useful for stylized AI and for repos that
+carry explicit AI-tool artifacts/commit signatures — and it correctly returns
+`uncertain` for the large indistinguishable middle.
+
 ## Bottom line
 
 This tool is a useful **triage and evidence** aid: it reliably surfaces stylized
