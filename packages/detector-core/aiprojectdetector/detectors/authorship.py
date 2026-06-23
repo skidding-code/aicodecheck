@@ -95,10 +95,37 @@ class AuthorshipArtifactsDetector(Detector):
         ]
 
     def repo_signals(self, scan: Scan, units: list[AnalysisUnit]) -> list[Signal]:
+        signals: list[Signal] = []
+
+        # Real, high-confidence evidence: AI-tool artifacts/commit signatures.
+        from .attribution import detect_tools
+
+        tools = [t for t in detect_tools(scan) if t.confidence >= 0.8]
+        if tools:
+            names = ", ".join(t.source.split(":", 1)[1] for t in tools)
+            top = max(t.confidence for t in tools)
+            signals.append(
+                self.signal(
+                    "ai_tool_markers",
+                    0.92,
+                    confidence=clamp(top),
+                    weight=2.5,
+                    reason=f"Detected AI coding-tool artifacts/commit signatures: {names}.",
+                    evidence=[
+                        self.evidence(
+                            "ai_tool_markers",
+                            t.rationale,
+                            severity=0.9,
+                        )
+                        for t in tools
+                    ],
+                )
+            )
+
         files = [f for f in scan.analyzable() if not f.is_documentation]
         total_loc = sum(f.loc for f in files)
         if total_loc < 40:
-            return []
+            return signals
         full = "\n".join(f.source for f in files)
         kloc = max(0.3, total_loc / 1000)
         artifacts = (len(_ARTIFACT_RE.findall(full)) + len(_PRAGMA_RE.findall(full))) / kloc
@@ -117,7 +144,7 @@ class AuthorshipArtifactsDetector(Detector):
                     severity=score,
                 )
             )
-        signals = [
+        signals.append(
             self.signal(
                 "missing_human_artifacts",
                 score,
@@ -127,7 +154,7 @@ class AuthorshipArtifactsDetector(Detector):
                 f"(absence leans AI; presence leans human).",
                 evidence=ev,
             )
-        ]
+        )
 
         # Commented-out code is a (weak) human tell; total absence in a sizable
         # codebase nudges toward AI.
