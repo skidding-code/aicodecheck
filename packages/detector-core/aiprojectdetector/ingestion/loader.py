@@ -12,7 +12,7 @@ from .git_repo import clone_repo, extract_metadata
 from .github import GitHubRef, build_clone_url, parse_reference
 from .ignore import IgnoreRules
 from .models import Scan, ScannedFile
-from .walker import DEFAULT_MAX_FILE_BYTES, walk_directory
+from .walker import DEFAULT_MAX_FILE_BYTES, classify_file, walk_directory
 
 
 class IngestionError(Exception):
@@ -100,6 +100,7 @@ def load_snippet(
         language=lang,
         size_bytes=len(code.encode("utf-8")),
         source=code,
+        **classify_file(filename, lang),
     )
     scan = Scan(kind="snippet", name=filename, source="<snippet>")
     scan.files = [sf]
@@ -111,14 +112,16 @@ def load_files(files: dict[str, str]) -> Scan:
     """Load a set of {relative_path: content} pairs (e.g. drag-and-drop)."""
     scan = Scan(kind="folder", name="uploaded-files", source="<files>")
     for rel, content in files.items():
-        lang = detect_language(rel, content[:512])
+        rel_norm = rel.replace("\\", "/")
+        lang = detect_language(rel_norm, content[:512])
         scan.files.append(
             ScannedFile(
-                rel_path=rel.replace("\\", "/"),
+                rel_path=rel_norm,
                 abs_path=None,
                 language=lang,
                 size_bytes=len(content.encode("utf-8")),
                 source=content,
+                **classify_file(rel_norm, lang),
             )
         )
     scan.bytes_scanned = sum(f.size_bytes for f in scan.files)

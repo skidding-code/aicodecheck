@@ -309,7 +309,8 @@ class PostgresStore implements Store {
   }
 
   async init(): Promise<void> {
-    const pg = (await import("pg")) as unknown as {
+    // Lazy, untyped import so the app builds/runs without `pg` installed.
+    const pg = (await import(/* @vite-ignore */ "pg" as string)) as unknown as {
       default?: { Pool: new (cfg: unknown) => PostgresStore["pool"] };
       Pool?: new (cfg: unknown) => PostgresStore["pool"];
     };

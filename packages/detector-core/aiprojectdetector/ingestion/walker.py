@@ -27,7 +27,7 @@ _CI_DIRS = (".github/workflows", ".gitlab", ".circleci", ".buildkite")
 _CI_FILES = (".travis.yml", "azure-pipelines.yml", "jenkinsfile", ".gitlab-ci.yml", "bitbucket-pipelines.yml")
 
 
-def _classify(rel_path: str, language: str) -> dict[str, bool]:
+def classify_file(rel_path: str, language: str) -> dict[str, bool]:
     lower = rel_path.lower()
     base = os.path.basename(lower)
     name_no_ext, ext = os.path.splitext(base)
@@ -111,7 +111,7 @@ def walk_directory(
                 text = raw.decode("utf-8", errors="replace")
 
             language = detect_language(rel, text[:512])
-            cls = _classify(rel, language)
+            cls = classify_file(rel, language)
             files.append(
                 ScannedFile(
                     rel_path=rel,
