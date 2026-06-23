@@ -12,24 +12,62 @@
 
 type DeflateFn = (buf: Uint8Array) => Uint8Array;
 
-let deflate: DeflateFn | null = null;
+interface ZlibLike {
+  deflateSync: (data: Uint8Array, opts: { level: number }) => ArrayLike<number>;
+}
 
-// Attempt to bind Node's zlib once, lazily, without making it a hard dependency.
+let deflate: DeflateFn | null = null;
+let warming = false;
+
+function bindZlib(zlib: ZlibLike): DeflateFn {
+  // Buffer is an ArrayLike<number>; copy element-wise into a plain Uint8Array.
+  deflate = (buf) => Uint8Array.from(zlib.deflateSync(buf, { level: 6 }));
+  return deflate;
+}
+
+const isNode =
+  typeof (globalThis as { process?: { versions?: { node?: string } } }).process?.versions?.node ===
+  "string";
+
+/**
+ * Attempt to bind Node's zlib synchronously when possible (CJS interop or a
+ * global ``require``), and otherwise kick off an async warm-up that swaps in the
+ * real zlib for subsequent calls. Browsers skip all of this and use the
+ * dependency-free estimator. Never throws.
+ */
 function loadNodeDeflate(): DeflateFn | null {
   if (deflate) return deflate;
-  // `require` exists in CJS interop and in Node ESM via createRequire; guard it.
+  if (!isNode) return null;
+
+  // Fast path: a synchronous require (CJS, or globalThis.require).
   const req = (globalThis as { require?: (id: string) => unknown }).require;
-  const proc = (globalThis as { process?: { versions?: { node?: string } } }).process;
-  if (typeof req === "function" && proc?.versions?.node) {
+  if (typeof req === "function") {
     try {
-      const zlib = req("node:zlib") as {
-        deflateSync: (data: Uint8Array, opts: { level: number }) => Buffer;
-      };
-      deflate = (buf) => new Uint8Array(zlib.deflateSync(buf, { level: 6 }));
-      return deflate;
+      return bindZlib(req("node:zlib") as ZlibLike);
     } catch {
-      /* fall through to the browser estimator */
+      /* fall through */
     }
+  }
+
+  // ESM path: warm up createRequire-based zlib asynchronously (sync callers use
+  // the estimator until this resolves; results stay within the same contract).
+  if (!warming) {
+    warming = true;
+    void (async () => {
+      try {
+        // Indirect specifier so the type checker / bundler does not attempt to
+        // resolve a Node-only module in browser builds.
+        const moduleSpecifier = "node:module";
+        const importDynamic = new Function("s", "return import(s)") as (
+          s: string,
+        ) => Promise<{ createRequire: (url: string) => (id: string) => unknown }>;
+        const mod = await importDynamic(moduleSpecifier);
+        const require = mod.createRequire(import.meta.url);
+        bindZlib(require("node:zlib") as ZlibLike);
+      } catch {
+        /* stay on the estimator */
+      }
+    })();
   }
   return null;
 }
